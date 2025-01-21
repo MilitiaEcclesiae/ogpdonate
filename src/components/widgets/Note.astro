@@ -1,0 +1,23 @@
+---
+interface Notes {
+  text: string;
+  backgroundColor?: string;
+  textColor?: string;
+  darkBackgroundColor?: string;
+  darkTextColor?: string;
+}
+
+const {
+  text = '"And this gospel of the kingdom will be preached throughout the whole world, as a testimony to all nations; and then the end will come." --Matthew 24:14',
+  textColor = "text-black-900",
+  darkTextColor = "dark:text-white", // White text in dark mode
+  backgroundColor = "bg-[#E6F0FF]", // Light blue background in light mode
+  darkBackgroundColor = "dark:bg-[#030620]", // Dark blue background in dark mode
+} = Astro.props as Notes; // Explicitly type the props
+---
+
+<section class={`${backgroundColor} ${darkBackgroundColor} ${darkTextColor} not-prose`}>
+  <div class={`max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium ${textColor} ${darkTextColor} underline-text`}>
+    {text}
+  </div>
+</section>

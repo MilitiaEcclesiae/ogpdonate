@@ -1,0 +1,208 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getPermalink } from '~/utils/permalinks';
+import Content from '~/components/widgets/Content.astro';
+import Features from '~/components/widgets/Features.astro';
+import TextOverlayImage from '~/components/widgets/TextOverlayImage.astro';
+
+
+const metadata = {
+  title: 'voluntary',
+  ignoreTitleTemplate: true,
+};
+---
+<Layout metadata={metadata}>
+
+  <!-- First TextOverlayImage -->
+  <div class="space-y-1">
+    <TextOverlayImage
+    image='https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551585/HEAD01_uv56cu.jpg'
+    title="BE PART OF THE MISSION!"
+    subtitle=`"WE ARE ALL MISSIONARIES!`
+    textBgOpacity = {0.3}
+    backgroundSize = 'cover'
+    titleSize = '3rem'
+    textColor = 'white'
+    backgroundHeight = '400px'
+    backgroundWidth = '100%'
+    containerWidth = '90%'
+  />
+  </div>
+
+  <!-- Content Sections -->
+  <Content
+  isReversed
+  items={[
+      {
+      title: "WHAT DOES IT MEAN TO BE AN EPIC MISSIONARY?",
+      description: 'The missionaries of the Omnes Gentes Project (OGP) preach the Gospel in the most challenging places: the savannah, the ice, the jungle, or the mountains. They live thrilling apostolic expeditions, striving until every nation is won for God!<br/><br/>Trained to adapt and overcome any obstacle, OGP missionaries are dedicated and resolute in praying and preaching to win souls for Christ. Whether through direct preaching, building chapels and schools, or humanitarian aid, their mission not only transforms lives but continues to impact communities long after their service.',
+      icon: 'tabler:rocket',
+      },
+  ]}
+  image={{
+    src: '',
+    alt: 'Features Image',
+  }}
+>
+</Content>
+<Content
+isAfterContent
+items={[
+    {
+    title: 'OUR MISSIONARY SPIRIT |>> EPIC AND ADVENTUROUS SPIRIT',
+    description: 'What sets Epic Missionaries apart is not just their training or equipment. What truly drives them is an epic spirit: a deep desire to achieve divine glory and fulfill the mission of winning souls for Christ, no matter the challenges. This spirit is reflected in their determination, dedication, and high standard of excellence.',
+    icon: 'tabler:rocket',
+    },
+    {
+    title: 'OUR MISSION AS A CATHOLIC MISSIONARY BODY',
+    description: 'Since 2016, OGP missionaries have been committed to winning souls for Jesus Christ, facing challenges in contexts of paganism, idolatry, polygamy, and hostile territories. Through thrilling apostolic expeditions, our missionaries inspire others to commit more deeply to the apostolic expansion of the Church. We preach in the savannah, the ice, the jungle, and the mountains.',
+    icon: 'tabler:rocket',
+    callToAction: { text: 'Want to learn more about our missions?', href:getPermalink('missions', 'category'), icon: 'tabler:binoculars', }
+    },
+]}
+image={{
+  src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1736619541/IMG_8870_l6zav1.jpg',
+  alt: 'Features Image',
+}}
+>
+</Content>
+<Content
+isReversed
+items={[
+    {
+    title: 'MISSIONARY VOCATION, ME?',
+    },
+    {
+    title: 'Have you ever thought about being a missionary?',
+    description: 'As Pope Francis said: "I would like to encourage everyone to be bearers of the good news of Christ… I appeal to all those who feel the call of the Holy Spirit to not be afraid and to be generous with the Lord."',
+    icon: 'tabler:rocket',
+    },
+    {
+    title: 'MISSIONARY, ME? FIND YOUR MISSION',
+    icon: 'tabler:rocket',
+    description: 'The missionary path is noble and demanding, reserved for those with a heart willing to serve, overcome adversity, and win souls for Jesus Christ. <br/>Empowered by God’s grace, our missionaries face fears, doubts, and fatigue, bringing the light of the Gospel to the darkest corners of the world.',
+    callToAction: { text: 'If you feel the call, join us! Send a message, and a priest will contact you.', href: 'https://chat.whatsapp.com/CG4xxpAh8Y7FhAj2kOuNiK', icon: 'tabler:brand-whatsapp', }
+    },
+]}
+image={{
+  src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551826/voluntario2_fo0psv.jpg',
+  alt: 'Features Image',
+}}
+>
+</Content>
+
+  <!-- As Individuals -->
+  <div class="space-y-3">
+    <TextOverlayImage
+    image='https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551848/voluntary3_n1zu4j.jpg'
+    title="AS INDIVIDUALS"
+    textBgOpacity = {0.3}
+    backgroundSize = 'cover'
+    titleSize = '3rem'
+    textColor = 'white'
+    backgroundHeight = '400px'
+    backgroundWidth = '100%'
+    containerWidth = '90%'
+  />
+  </div>
+  <!-- Contribution Methods -->
+  <Features
+  title="Want to collaborate with OGP?"
+  subtitle="Every initiative is welcome. OGP relies on the generosity of volunteers who contribute in various ways:"
+  items={[
+    {
+      title: 'Prayers',
+      description:
+        'The power of prayer sustains our mission',
+      icon: 'tabler:heart',
+    },
+    {
+      title: 'Talents and Time',
+      description:
+        'Offer your skills to support our initiatives',
+      icon: 'tabler:clock',
+    },
+    {
+      title: 'Donations',
+      description:
+        'Contribute with material or financial resources',
+      icon: 'tabler:tip-jar',
+    },
+  ]}
+/>
+  <!-- Digital Missionary recruitment -->
+  <div class="mt-1 mb-7">
+    <TextOverlayImage
+    image='https://res.cloudinary.com/dqk5ejjai/image/upload/v1736623031/voluntary09_nmaosl.jpg'
+    title="Become an OGP Digital Missionary"
+    description="Join us in spreading the Gospel through the digital frontier. Use your skills in media editing, digital design, Generative AI, and web technologies to support global missions and bring Christ’s light to the cyber world. Your talents can transform lives and spread hope in the digital age. Answer the call—be a beacon of faith online. Volunteer today and make an eternal impact!"
+    textBgOpacity = {0.3}
+    backgroundSize = 'cover'
+    titleSize = '3rem'
+    textColor = 'white'
+    backgroundHeight = '450px'
+    backgroundWidth = '100%'
+    containerWidth = '90%'
+  />
+  </div>
+
+  <!-- As Orgs -->
+  <div class="space-y-8">
+    <TextOverlayImage
+    image='https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551838/Voluntarios_cbgxmo.jpg'
+    title="AS INSTITUTIONS AND PARISHES"
+    textBgOpacity = {0.3}
+    backgroundSize = 'cover'
+    titleSize = '3rem'
+    textColor = 'white'
+    backgroundHeight = '400px'
+    backgroundWidth = '100%'
+    containerWidth = '90%'
+  />
+  </div>
+<Content
+  isReversed
+  items={[
+      {
+      description: 'Your company, foundation, or parish can make a profound difference in the lives of persecuted and needy Christians worldwide. By joining as an entity, you can support projects, solidarity awards, and aid programs for those suffering for their faith.',
+      icon: 'tabler:rocket',
+      },
+      {
+      title: 'COLLABORATE AS A COMPANY',
+      description: 'Your company or foundation has the opportunity to be a transformative force by adopting projects, supporting aid initiatives, or contributing to solidarity awards.',
+      icon: 'tabler:rocket',
+      },
+      {
+      title: 'COLLABORATE AS A PARISH',
+      description: 'Through Omnes Gentes Project, your parish can engage with the reality of suffering Christians by hosting conferences, exhibitions, charity events, and other activities to raise awareness of their plight.',
+      icon: 'tabler:rocket',
+    },
+  ]}
+  image={{
+    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551629/IMG_20230309_134527_bokdq7.jpg',
+    alt: 'Features Image',
+  }}
+>
+</Content>
+<Content
+isAfterContent
+items={[
+    {
+    title: 'YOUR HELP MAKES A DIFFERENCE',
+    description: "If you are part of the board or trustees of a foundation, company, or work within one, you can join our cause to support Christians enduring persecution, discrimination, or living in extreme conditions in the world's most needy countries.",
+    icon: 'tabler:rocket',
+    },
+    {
+    title: 'There are multiple ways to get involved:',
+    description: 'Through aid programs or solidarity awards in your company or foundation. By adopting a specific project to create a direct impact.',
+    icon: 'tabler:rocket',
+    callToAction: { text: 'Interested in collaborating? Leave us a message with the social objective and scope of your institution, and together we will find the best way to collaborate and change lives.', href: 'mailto:info@omnesgentesproject.com', icon: 'tabler:mail', }
+    },
+]}
+image={{
+  src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1736621088/voluntary4_vf0iow.jpg',
+  alt: 'Features Image',
+}}
+>
+</Content>
+</Layout>

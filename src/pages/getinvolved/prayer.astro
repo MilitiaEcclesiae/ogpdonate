@@ -1,0 +1,127 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import TextOverlayImage from '~/components/widgets/TextOverlayImage.astro';
+
+const metadata = {
+  title: 'prayer',
+  ignoreTitleTemplate: true,
+};
+---
+<Layout metadata={metadata}>
+
+<TextOverlayImage
+image='https://res.cloudinary.com/dqk5ejjai/image/upload/v1737308592/abt_whatwedo_banner_c99vm4.jpg'
+title="Prayer"
+textBgOpacity = {0.1}
+backgroundSize = 'cover'
+titleSize = '5rem'
+textColor = 'white'
+backgroundHeight = '450px'
+backgroundWidth = '100%'
+containerWidth = '100%'
+/>
+
+<Content
+    title='Adopta Espiritualmente una Tribu'
+    isReversed
+    items={[
+      {
+        description:
+          '¿Sabías que existen más de 637 pueblos paganos donde nunca fue anunciado Nuestro Señor Jesucristo? A estos pueblos los llamamos “pueblos no-contactados”.<br/><br/>Los pueblos “no-contactados” son los pueblos más pobres de los más pobres. Y son los más pobres, aun cuando tengan una buena situación económica, sanitaria, afectiva o social (lo cual, de todos modos, no parece ser el caso de ninguno de estos pueblos). Son los más pobres por un solo motivo: no conocieron jamás a Jesús.',
+        icon: 'tabler:clock',
+        },
+    ]}
+    image={{
+      src: '',
+      alt: 'Features Image',
+    }}
+  >
+  </Content>
+  <Content
+    isAfterContent
+    items={[
+      {
+        description:
+          'Nuestro Señor padeció y murió en la Cruz por amor a ellos, pero nadie se los ha anunciado aún. Ignoran que Dios se hizo hombre y habitó entre nosotros, que nos amó hasta el extremo para que fuéramos salvos. Ignoran que nos dejó a su madre bendita, nuestra Virgen María. Ellos no saben esto, y no podemos dejar que pasen a la eternidad sin saberlo.<br/><br/>¡Nos propusimos no descansar hasta que podamos anunciar el Evangelio a todas las gentes!',
+        icon: 'tabler:clock',
+      },
+    ]}
+    image={{
+      src: '',
+      alt: 'Benefits Image',
+    }}
+  >
+  </Content>
+
+  <div class="container mx-auto px-1 sm:px-6 lg:px-5 py-3 ml-9">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <div>
+        <h3 class="text-2xl sm:text-2xl font-bold text-red-800">
+            Cada adoptante asumirá el compromiso firme de rezar pidiendo tres gracias concretas:
+        </h3>
+        <p class="text-lg text-gray-700">
+            • Que al pueblo llegue al menos un Misionero a hacer el anuncio de la Buena Nueva
+            <br/>
+            • La conversión de dicho pueblo a Jesucristo y, por tanto, a la Santa Fe Católica
+            <br/>
+            • La salvación eterna de dicho pueblo perseverando en la fe.            
+        </p>
+        <p class="text-lg text-gray-700 mt-5">
+            Para estos magnánimos fines contamos con medios humanamente insignificantes, pero sobrenaturalmente potentísimos:
+            <br/>
+            1) Un Avemaría por día<br/>
+            2) Un Rosario por semana<br/>
+            3) Una Confesión por mes<br/>
+            4) Una Peregrinación (o visita) por año a cualquier santuario.<br/>
+            O Inclúyelos en tus oraciones diarias y en la Santa Comunión.            
+        </p>
+          </div>
+     
+      <div class="flex justify-center items-center">
+        <TextOverlayImage
+          image='https://res.cloudinary.com/dqk5ejjai/image/upload/v1737308592/abt_whatwedo_banner_c99vm4.jpg'
+          textBgOpacity = {0.1}
+          backgroundSize = 'cover'
+          backgroundHeight = '450px'
+          backgroundWidth = '100%'
+          containerWidth = '100%'
+/>
+      </div>
+    </div>
+  </div>
+
+  <Hero>
+    <Fragment slot="subtitle">
+      <p class="text-red-800 md:text-2xl text-left font-bold dark:text-white">
+        ¡Si deseas adoptar una tribu espiritualmente completa el formulario y te contactaremos! Te enviaremos un email con la Tribu, Aldea o Misionero asignado. ¡Gracias!  
+      </p>     
+    </Fragment>
+  </Hero>
+
+  <TextOverlayImage
+  image={{ src: '', alt: 'Description of the image' }}
+  title="Adopta un misionero"
+  textBgOpacity = {0.1}
+  backgroundSize = 'cover'
+  titleSize = '3rem'
+  textColor = 'white'
+  backgroundHeight = '350px'
+  backgroundWidth = '100%'
+  containerWidth = '100%'
+  />
+
+
+  <Hero>
+    <Fragment slot="subtitle">
+      <p class="text-red-800 md:text-2xl text-left font-bold dark:text-white">
+        Puedes adoptar a un misionero espiritualmente y rezar por él, al estilo de Santa Teresa de Ávila y Santa Teresita del Niño Jesús. 
+      </p><br/> 
+      <p class="text-red-800 md:text-2xl text-left font-bold dark:text-white">
+        Además de adoptarlo espiritualmente, puedes ser padrino económico. 
+      </p>     
+    </Fragment>
+  </Hero>
+</Layout>

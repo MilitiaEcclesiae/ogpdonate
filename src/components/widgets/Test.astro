@@ -1,0 +1,167 @@
+---
+// Background image (replace with your image path)
+const backgroundImage = "https://cdn.pixabay.com/photo/2023/01/08/20/16/christmas-7706050_1280.jpg";
+
+// Content for each tab
+const bibleContent = [
+  { id: 1, title: "Bible in Tibeten", description: "Help form future priests." },
+  { id: 2, title: "Bible in Chinese", description: "Fund the construction of a new church." },
+  { id: 3, title: "Feed the Poor", description: "Provide meals for families in need." },
+];
+const catechismContent = [
+  { id: 1, title: "Support Seminarians", description: "Help form future priests." },
+  { id: 2, title: "Build a Church", description: "Fund the construction of a new church." },
+  { id: 3, title: "Feed the Poor", description: "Provide meals for families in need." },
+];
+const prayerContent = [
+  { id: 1, title: "prayer card", description: "Help form future priests." },
+  { id: 2, title: "Build a Church", description: "Fund the construction of a new church." },
+  { id: 3, title: "Feed the Poor", description: "Provide meals for families in need." },
+];
+---
+
+<div class="relative min-h-[500px] flex items-center justify-center bg-cover bg-center" style={`background-image: url(${backgroundImage}); margin-left: 3.5rem; margin-right: 3.5rem;`}>
+  <!-- Overlay for better readability -->
+  <div class="absolute inset-0 bg-black/50"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto p-6">
+    <!-- Tabs for Bibles, Catechisms, and Prayers -->
+    <div class="grid grid-cols-3 gap-4 mb-6">
+      <button
+        id="tab-bibles"
+        class="tab-button py-2 px-4 rounded-md text-center font-medium transition-colors"
+        aria-selected="true"
+      >
+        Bibles
+      </button>
+      <button
+        id="tab-catechisms"
+        class="tab-button py-2 px-4 rounded-md text-center font-medium transition-colors"
+        aria-selected="false"
+      >
+        Catechisms
+      </button>
+      <button
+        id="tab-prayers"
+        class="tab-button py-2 px-4 rounded-md text-center font-medium transition-colors"
+        aria-selected="false"
+      >
+        Prayers
+      </button>
+    </div>
+
+    <!-- Bible Content -->
+    <div id="bible-content">
+      <h2 class="text-3xl font-bold text-white mb-6">RSVCE in different languages</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {bibleContent.map((item) => (
+          <div class="bg-white/90 backdrop-blur-sm rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+            <p class="text-gray-700 mb-4">{item.description}</p>
+            <button
+              class="w-full py-2 bg-red-700 text-white font-medium rounded-md hover:bg-red-800 transition-colors"
+            >
+              Download
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Catechism Content -->
+    <div id="catechism-content" class="hidden">
+      <h2 class="text-3xl font-bold text-white mb-6">Catechisms for different age groups</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {catechismContent.map((item) => (
+          <div class="bg-white/90 backdrop-blur-sm rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+            <p class="text-gray-700 mb-4">{item.description}</p>
+            <button
+              class="w-full py-2 bg-red-700 text-white font-medium rounded-md hover:bg-red-800 transition-colors"
+            >
+              Download
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Prayer Content -->
+    <div id="prayer-content" class="hidden">
+      <h2 class="text-3xl font-bold text-white mb-6">Prayers for different occasions</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {prayerContent.map((item) => (
+          <div class="bg-white/90 backdrop-blur-sm rounded-lg shadow-md p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+            <p class="text-gray-700 mb-4">{item.description}</p>
+            <button
+              class="w-full py-2 bg-red-700 text-white font-medium rounded-md hover:bg-red-800 transition-colors"
+            >
+              Download
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Tabs functionality
+  const tabs = document.querySelectorAll('.tab-button');
+  const bibleContent = document.getElementById('bible-content');
+  const catechismContent = document.getElementById('catechism-content');
+  const prayerContent = document.getElementById('prayer-content');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      // Set aria-selected attribute
+      tabs.forEach((t) => t.setAttribute('aria-selected', 'false'));
+      tab.setAttribute('aria-selected', 'true');
+
+      // Show/hide content
+      if (tab.id === 'tab-bibles') {
+        bibleContent.classList.remove('hidden');
+        catechismContent.classList.add('hidden');
+        prayerContent.classList.add('hidden');
+      } else if (tab.id === 'tab-catechisms') {
+        bibleContent.classList.add('hidden');
+        catechismContent.classList.remove('hidden');
+        prayerContent.classList.add('hidden');
+      } else if (tab.id === 'tab-prayers') {
+        bibleContent.classList.add('hidden');
+        catechismContent.classList.add('hidden');
+        prayerContent.classList.remove('hidden');
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Tab button styles */
+  .tab-button[aria-selected="true"] {
+    background-color: #b2161e;
+    color: white;
+  }
+
+  .tab-button[aria-selected="false"] {
+    background-color: #f3f4f6; /* Gray */
+    color: #4b5563; /* Gray-700 */
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 640px) {
+    .text-3xl {
+      font-size: 2rem; /* Smaller font size for mobile */
+    }
+
+    .grid-cols-3 {
+      grid-template-columns: 1fr; /* Single column on mobile */
+    }
+
+    .gap-6 {
+      gap: 2rem; /* Reduce gap on mobile */
+    }
+  }
+</style>

@@ -1,0 +1,200 @@
+---
+import { Icon } from "astro-icon/components";
+import DrawerButtonDonorbox from "./DrawerButton_donorbox.astro";
+
+// Define the props interface for TypeScript
+interface FooterProps {
+  supporterMail?: string;
+  donateLink?: string;
+  socialLinks?: { ariaLabel: string; icon: string; href: string }[];
+  copyrightText?: string;
+  claimText?: string;
+  links?: { title: string; url: string }[];
+}
+
+// Default props
+const {
+  supporterMail = "info@omnesgentesproject.com",
+  socialLinks = [
+    { ariaLabel: 'YouTube', icon: 'tabler:brand-youtube', href: 'https://www.youtube.com/channel/UCZi70I4cl1Dp1KXFEVmbIQA' },
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: 'https://www.instagram.com/omnes_gentes_project/' },
+    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/OmnesGentesProject1/' },
+    { ariaLabel: 'Email', icon: 'tabler:mail', href: 'mailto:info@omnesgentesproject.com' },
+  ],
+  copyrightText = "© Copyright 2025 OGP | Donations are tax deductible | ABN 15 000 002 522 | <a href='/pages/privacy'>Privacy</a> | <a href='/sitemap?view=html&amp;id=2'>Sitemap</a> | <a href='/pages/terms' title='OGP's Terms & Conditions'>Terms & Conditions</a>",
+  claimText = "OGP is a 501(c)(3) Tax Exempt Organization in the USA",
+  links = [
+    { title: "What we do", url: "/abt_what" },
+    { title: "Offer Mass", url: "/getinvolved/mass" },
+    { title: "Donate", url: "https://donorbox.org/omnesgentesproject" },
+  ],
+} = Astro.props as FooterProps;
+---
+
+<footer class="page-foot clearfix homepage-template bg-white dark:bg-[#030620] w-full">
+  <div class="ht-wrapper flex flex-col items-center text-center w-full">
+    <!-- Links Section -->
+    <div class="moduletable links bg-[#B3D4FF] dark:bg-[#0A0E3A] w-full py-4"> <!-- Light Blue Background in Light Mode, Dark Blue in Dark Mode -->
+      <div class="custom links">
+        <p>
+          {links.map((link) => (
+            <>
+              <a href={link.url} title={`Learn more about ${link.title}`} class="footer-link text-black dark:text-white">{link.title}</a>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </>
+          ))}
+        </p>
+      </div>
+    </div>
+
+    <!-- Horizontal Row for Supporter Enquiries, Donate Button, and Connect with Us -->
+    <div class="footer-row bg-[#4D94FF] dark:bg-[#111754] w-full py-4"> <!-- Medium Blue Background in Light Mode, Darker Blue in Dark Mode -->
+      <!-- Supporter Enquiries Section -->
+      <div class="footer-column">
+        <div class="moduletable hotline">
+          <div class="custom hotline">
+            <h3 class="footer-heading text-black dark:text-white" style="margin-top: 0; font-weight: bold">Supporter enquiries</h3>
+            <h4 style="margin-top: 0;">
+              <a href={`mailto:${supporterMail}`} class="text-black dark:text-white">{supporterMail}</a>
+            </h4>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donate Button Section -->
+      <div class="footer-column">
+        <div class="moduletable hotline register">
+          <div class="custom hotline register">
+            <div>
+              <DrawerButtonDonorbox
+                toggleText="DONATE"
+                marginTop="2rem"
+                marginBottom="-7rem"
+                marginLeft="3rem"
+                marginRight="3rem"
+                backgroundImage="https://cdn.pixabay.com/photo/2017/08/10/22/34/candles-2628473_960_720.jpg"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connect with Us Section -->
+      <div class="footer-column">
+        <div class="moduletable social-icons">
+          <div class="custom social-icons">
+            <h3 style="margin-top: 0; font-weight: bold;" class="text-black dark:text-white">Connect with us</h3>
+            <ul class="flex justify-center gap-4">
+              {socialLinks.map((social) => (
+                <li key={social.ariaLabel}> 
+                  <a href={social.href} title={`Visit OGP's ${social.ariaLabel} page`} aria-label={social.ariaLabel} class="text-black dark:text-white">
+                    {social.icon && <Icon name={social.icon} class="w-5 h-5" />}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Claim Text Section -->
+    <div class="moduletable copyright bg-[#0066CC] dark:bg-[#18206E] w-full py-4"> <!-- Dark Blue Background in Light Mode, Darker Blue in Dark Mode -->
+      <div class="custom copyright">
+        <p set:html={claimText} class="text-white"></p>
+      </div>
+    </div>
+
+    <!-- Copyright Section -->
+    <div class="moduletable copyright bg-[#003366] dark:bg-[#1F2988] w-full py-4"> <!-- Very Dark Blue Background in Light Mode, Darker Blue in Dark Mode -->
+      <div class="custom copyright">
+        <p set:html={copyrightText} class="text-white"></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Add global styles for the footer */
+  .page-foot {
+    padding: 0; /* Remove padding to eliminate white space */
+    font-family: Arial, sans-serif;
+    position: relative; /* Ensure footer is a positioning context */
+  }
+
+  .ht-wrapper {
+    max-width: 100%; /* Ensure the wrapper spans the full width */
+    margin: 0; /* Remove margin to eliminate side spacing */
+    padding: 0; /* Remove padding to eliminate side spacing */
+    position: relative; /* Ensure wrapper is a positioning context */
+  }
+
+  .btn-pink {
+    background-color: #b2161e;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+
+  .btn-pink:hover {
+    background-color: #8a1118;
+  }
+
+  .social-icons ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+  }
+
+  .social-icons li {
+    display: inline-block;
+  }
+
+  .clear {
+    clear: both;
+  }
+
+  .footer-separator {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 0; /* Remove margin to eliminate white space */
+  }
+
+  .footer-row {
+    display: flex;
+    flex-direction: row; /* Ensure horizontal layout */
+    justify-content: center; /* Center the columns horizontally */
+    align-items: flex-start;
+    width: 100%;
+    gap: 300px; /* Add sufficient space between columns */
+  }
+
+  .footer-column {
+    flex: 0 1 auto; /* Allow columns to grow as needed */
+    text-align: center;
+  }
+
+  /* Add underline to each link */
+  .footer-link {
+    text-decoration: none; /* Remove default underline */
+    border-bottom: 2px solid #000; /* Add custom underline */
+    padding-bottom: 2px; /* Add spacing between text and underline */
+    color: inherit; /* Inherit text color */
+  }
+
+  .footer-link:hover {
+    color: #b2161e; /* Change color on hover (optional) */
+    border-bottom-color: #b2161e; /* Change underline color on hover (optional) */
+  }
+
+  @media (max-width: 768px) {
+    .footer-row {
+      flex-direction: column; /* Stack columns vertically on smaller screens */
+      gap: 20px;
+      align-items: center;
+    }
+  }
+</style>

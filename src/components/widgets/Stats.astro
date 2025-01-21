@@ -1,0 +1,60 @@
+---
+import type { Stats as Props } from '~/types';
+import WidgetWrapper from '../ui/WidgetWrapper.astro';
+import Headline from '../ui/Headline.astro';
+import { Icon } from 'astro-icon/components';
+
+const {
+  title,
+  subtitle,
+  tagline,
+  stats = [],
+  id,
+  isDark = false,
+  classes = {},
+  bg,
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <Headline {title} {subtitle} {tagline}/>
+
+  <div class="flex flex-wrap justify-center -m-4 text-center">
+    {
+      stats.map(({ amount, title, icon }) => {
+        // Sanitize dynamic content to prevent XSS
+        const sanitizedAmount = typeof amount === 'string' ? amount.replace(/</g, '&lt;').replace(/>/g, '&gt;') : amount;
+        const sanitizedTitle = typeof title === 'string' ? title.replace(/</g, '&lt;').replace(/>/g, '&gt;') : title;
+
+        return (
+          <div
+            class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500 intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-quarter"
+            aria-labelledby={`stat-${sanitizedTitle}`}
+          >
+            {icon && (
+              <div class="flex items-center justify-center mx-auto mb-4 text-primary text-red-700">
+                <Icon name={icon} class="w-10 h-10" />
+              </div>
+            )}
+            {sanitizedAmount && (
+              <div
+                class="font-heading text-primary text-[2.6rem] font-bold text-red-700 dark:text-white lg:text-5xl xl:text-6xl"
+                aria-label={`Statistic: ${sanitizedAmount}`}
+              >
+                {sanitizedAmount}
+              </div>
+            )}
+            {sanitizedTitle && (
+              <div
+                id={`stat-${sanitizedTitle}`}
+                class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base"
+              >
+                {sanitizedTitle}
+              </div>
+            )}
+          </div>
+        );
+      })
+    }
+  </div>
+</WidgetWrapper>

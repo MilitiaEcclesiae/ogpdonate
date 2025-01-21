@@ -1,0 +1,114 @@
+---
+export interface Props {
+  src: string; // Video source URL
+  poster?: string; // Poster image URL
+  width?: string; // Width of the video (e.g., "100%", "800px")
+  height?: string; // Height of the video (e.g., "450px")
+  marginTop?: string; // Top margin (e.g., "2rem")
+  marginBottom?: string; // Bottom margin (e.g., "2rem")
+  marginLeft?: string; // Left margin (e.g., "2rem")
+  marginRight?: string; // Right margin (e.g., "2rem")
+  muted?: boolean; // Mute the video (default: false)
+  loop?: boolean; // Loop the video (default: false)
+  autoplay?: boolean; // Autoplay the video (default: false)
+  startTime?: number; // Start time in seconds (default: 0)
+  endTime?: number; // End time in seconds (default: video duration)
+}
+
+const {
+  src,
+  poster = '',
+  width = '100%',
+  height = 'auto',
+  marginTop = '0',
+  marginBottom = '0',
+  marginLeft = '0',
+  marginRight = '0',
+  muted = false,
+  loop = false,
+  autoplay = false,
+  startTime = 0,
+  endTime = 0,
+} = Astro.props as Props; // Explicitly type the props
+---
+
+<div
+  class="video-container"
+  style={`
+    width: ${width};
+    height: ${height};
+    margin-top: ${marginTop};
+    margin-bottom: ${marginBottom};
+    margin-left: ${marginLeft};
+    margin-right: ${marginRight};
+  `}
+>
+  <video
+    id="video-player"
+    class="w-full h-full object-cover"
+    controls
+    poster={poster}
+    muted={muted}
+    loop={loop}
+    autoplay={autoplay}
+    data-start-time={startTime}
+    data-end-time={endTime}
+  >
+    <source src={src} type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<script>
+  // Function to handle video playback
+  const setupVideo = () => {
+    const video = document.getElementById('video-player') as HTMLVideoElement | null;
+
+    if (video) {
+      // Get startTime and endTime from data attributes
+      const startTime = parseFloat(video.dataset.startTime || '0');
+      const endTime = parseFloat(video.dataset.endTime || '0');
+
+      // Set the start time
+      video.currentTime = startTime;
+
+      // If endTime is provided, pause the video at the specified time
+      if (endTime > 0) {
+        const handleTimeUpdate = () => {
+          if (video.currentTime >= endTime) {
+            video.pause();
+            video.removeEventListener('timeupdate', handleTimeUpdate);
+          }
+        };
+
+        video.addEventListener('timeupdate', handleTimeUpdate);
+      }
+    } else {
+      console.error('Video element not found');
+    }
+  };
+
+  // Initialize video setup
+  setupVideo();
+</script>
+
+<style>
+  .video-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px; /* Optional: Add rounded corners */
+  }
+
+  video {
+    display: block;
+    background-color: #000; /* Fallback background color */
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .video-container {
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+</style>

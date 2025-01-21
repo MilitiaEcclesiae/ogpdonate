@@ -1,0 +1,26 @@
+---
+import Layout from '~/layouts/Layout.astro';
+import { getHomePermalink } from '~/utils/permalinks';
+
+const title = `Error 404`;
+---
+
+<Layout metadata={{ title }}>
+  <div class="relative w-full h-screen bg-cover bg-center" style="background-image: url('https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551665/404page_ktmjmw.jpg'); background-size: 100% 87%;">
+    <!-- Content Container (centered) -->
+    <div class="absolute inset-0 flex justify-center items-center text-center px-4">
+      <div class="text-white bg-opacity-50 bg-black p-6 rounded-lg">
+        <h2 class="mb-8 font-bold text-9xl">
+          <span class="sr-only">Error</span>
+          <span class="text-primary">404</span>
+        </h2>
+        <p class="text-3xl font-semibold md:text-3xl">Oops! This page seems to have wandered off the path.</p>
+        <p class="mt-4 mb-8 text-lg text-muted dark:text-slate-400">
+          But don’t fret! There’s a whole world of wisdom and adventure waiting for you on our homepage—go forth and explore!
+        </p>
+        <a rel="noopener noreferrer" href={getHomePermalink()} class="btn ml-4">Back to homepage</a>
+        <br/><br/><br/>
+      </div>
+    </div>
+  </div>
+</Layout>

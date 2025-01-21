@@ -1,0 +1,176 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Vid from '~/components/widgets/Vid.astro';
+import { getPermalink } from '~/utils/permalinks';
+import ImgInfo from '~/components/widgets/ImgInfo.astro'
+import Content from '~/components/widgets/Content.astro';
+import ImgGallery from '~/components/widgets/ImgGallery.astro';
+import EventGallery from '~/components/widgets/EventGallery.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+
+//ImgGallery
+const images = [
+  { image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737227918/main_imggallery05_yptpbn.jpg' },
+  { image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737227915/main_imggallery01_ajjmkk.jpg' },
+  { image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737227913/main_imggallery02_oitazj.jpg' },
+  { image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737227913/main_imggallery03_xsmeqh.jpg' },
+  { image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737227913/main_imggallery04_c22rj6.jpg' },
+  
+];
+//ImgInfo
+const imageList = [
+  {
+    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737229941/main_imginfo_pakistan_bad8vl.jpg',
+    title: 'PAKISTAN',
+    popupContent: 'This is additional information about Image 1.',
+  },
+  {
+    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737229935/main_imginfo_malawi_p7wnip.jpg',
+    title: 'MALAWI',
+    popupContent: 'This is additional information about Image 2.',
+  },
+  {
+    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737229936/main_imginfo_amazona_czpiol.jpg',
+    title: 'AMAZON',
+    popupContent: 'This is additional information about Image 3.',
+  },
+  {
+    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737229935/main_imginfo_polonorte_hr9u1w.jpg',
+    title: 'NORTH POLE',
+    popupContent: 'This is additional information about Image 1.',
+  },
+  {
+    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737229935/main_imginfo_tibet_heorm8.jpg',
+    title: 'TIBET',
+    popupContent: 'This is additional information about Image 1.',
+  },
+  {
+    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737229934/main_imginfo_panama_vrn9pv.jpg',
+    title: 'PANAMA',
+    popupContent: 'This is additional information about Image 1.',
+  },
+  {
+    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737229933/main_imginfo_indochina_sqgmnr.png',
+    title: 'INDOCHINA',
+    popupContent: 'This is additional information about Image 1.',
+  },
+];
+
+//rolling notices
+const events = [
+  {
+    image: 'https://example.com/image1.jpg',
+    title: 'Event 1',
+    subtitle: 'Join us for an exciting event!',
+    link: 'https://example.com/event1',
+  },
+  {
+    image: 'https://example.com/image2.jpg',
+    title: 'Event 2',
+    subtitle: 'Don’t miss out on this amazing opportunity!',
+    link: 'https://example.com/event2',
+  },
+  {
+    image: 'https://example.com/image3.jpg',
+    title: 'Event 3',
+    subtitle: 'Learn something new and have fun!',
+    link: 'https://example.com/event3',
+  },
+];
+
+const metadata = {
+  title: 'main page',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+
+<Vid
+src="https://res.cloudinary.com/dqk5ejjai/video/upload/v1737141472/vidmain_yzpcjh.mp4"
+width="100%"
+height="1200px"
+marginTop="1rem"
+marginBottom="1rem"
+muted={true}
+loop={true}
+autoplay={true}
+/>  
+<div class="mt-20">
+<ImgGallery imgs={images} backgroundSize="cover" />
+<div class="mt-20">
+<ImgInfo imageList={imageList} backgroundSize="cover" />
+</div>
+<!-- rolling notices -->
+<EventGallery
+  events={events}
+  backgroundSize="contain"
+  titleSize="1.5rem"
+  subtitleSize="1rem"
+  buttonStyle="background-color: #b2161e;"
+/>
+
+<!-- Missions for 2025 -->
+<Content
+    isReversed
+    title="Missions for 2025"
+    items={[
+      {
+        title: "Mission: Amazonas",
+        description: '<br><br>Date: <br><br>Location:',
+        icon: 'tabler:cross',
+      },
+    ]}
+    image={{
+      src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551737/libro_Tinieblas_wdmeo4.jpg',
+      alt: 'Features Image',
+    }}
+  >
+  </Content>
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: "Mission: Darien Jungle",
+        description: '<br><br>Date: <br><br>Location:',
+        icon: 'tabler:book',
+      },
+    ]}
+    image='https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551560/book_AdGentes_yomqpd.jpg'
+       >
+</Content>  
+<!-- Ongoing Campaigns -->
+<Content
+    isReversed
+    title="Ongoing Campaigns"
+    items={[
+      {
+        title: "Campaign1: Sanando las Comunidades Más Aisladas de Malawi",
+        description: "<br><br>Date: <br><br>Location:<br><br>Amount:",
+        icon: 'tabler:tip-jar',
+        callToAction: { text: 'Donate Now', href: getPermalink('campaigns_1', 'post'), icon: 'tabler:heart-handshake',}
+        },
+    ]}
+    image='https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551801/Proyecto-extremeMM_sylhfo.jpg'
+  >
+  </Content>
+  <Content
+    isReversed
+    items={[
+      {
+        title: "Campaign2: WENYA, Entronización de Cristo Rey",
+        description: "<br><br>Date: <br><br>Location:<br><br>Amount:",
+        icon: 'tabler:tip-jar',
+        callToAction: { text: 'Donate Now', href: getPermalink('campaigns_2', 'post'), icon: 'tabler:heart-handshake', }
+        },
+    ]}
+    image='https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551864/WENYA_apapzx.jpg'
+  >
+</Content>
+
+
+  <!-- Mission Posts ******* -->
+  <BlogLatestPosts
+    title="EXPLORE THE LATEST MISSIONS"
+  />
+</Layout>

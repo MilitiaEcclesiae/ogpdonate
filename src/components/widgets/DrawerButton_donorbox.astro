@@ -1,0 +1,165 @@
+---
+import DonateForm2 from './DonateForm2.astro';
+
+// Define the props for the Drawer component
+export interface Props {
+  isOpen?: boolean; // Whether the drawer is open by default
+  toggleText?: string; // Text for the toggle button
+  marginTop?: string; // Props for DonateForm
+  marginBottom?: string;
+  marginLeft?: string;
+  marginRight?: string;
+  backgroundImage?: string;
+}
+
+const {
+  isOpen = false, // Drawer is closed by default
+  toggleText = "Open Donation Form", // Default toggle button text
+  marginTop = "2rem",
+  marginBottom = "-7rem",
+  marginLeft = "3rem",
+  marginRight = "3rem",
+  backgroundImage = "https://cdn.pixabay.com/photo/2017/08/10/22/34/candles-2628473_960_720.jpg",
+} = Astro.props;
+---
+
+<!-- Drawer Container -->
+<div class="drawer-container">
+  <!-- Toggle Button -->
+  <button
+    id="drawer-toggle"
+    class="drawer-toggle-button"
+    aria-label="Toggle donation form drawer"
+    aria-expanded={isOpen}
+  >
+    {toggleText}
+  </button>
+
+  <!-- Drawer Content -->
+  <div
+    id="drawer-content"
+    class="drawer-content"
+    aria-hidden={!isOpen}
+    role="dialog"
+    aria-modal="true"
+  >
+    <!-- Close Button -->
+    <button
+      id="drawer-close"
+      class="drawer-close-button"
+      aria-label="Close donation form drawer"
+    >
+      &times;
+    </button>
+
+    <!-- DonateForm Component -->
+    <DonateForm2
+      marginTop={marginTop}
+      marginBottom={marginBottom}
+      marginLeft={marginLeft}
+      marginRight={marginRight}
+      backgroundImage={backgroundImage}
+    />
+  </div>
+</div>
+
+<style>
+  /* Drawer Container */
+  .drawer-container {
+    position: relative;
+  }
+
+  /* Toggle Button */
+  .drawer-toggle-button {
+    padding: 0.5rem 1rem;
+    background-color: #b2161e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 1000;
+  }
+
+  .drawer-toggle-button:hover {
+    background-color: #8a1118;
+  }
+
+  /* Drawer Content */
+  .drawer-content {
+    position: fixed;
+    bottom: -100%; /* Start off-screen */
+    left: 0;
+    width: 100%;
+    height: auto; /* Adjust height based on content */
+    max-height: 90vh; /* Limit height to 90% of viewport */
+    background-color: white;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    transition: bottom 0.3s ease-in-out;
+    z-index: 999;
+    overflow-y: auto; /* Enable scrolling if content overflows */
+  }
+
+  .drawer-content[aria-hidden="false"] {
+    bottom: 0; /* Slide up */
+  }
+
+  /* Close Button */
+  .drawer-close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .drawer-close-button:hover {
+    color: #b2161e;
+  }
+</style>
+
+<script>
+  // Drawer Logic
+  const drawerToggle = document.getElementById("drawer-toggle");
+  const drawerContent = document.getElementById("drawer-content");
+  const drawerClose = document.getElementById("drawer-close");
+
+  if (drawerToggle && drawerContent && drawerClose) {
+    // Toggle Drawer
+    drawerToggle.addEventListener("click", () => {
+      const isHidden = drawerContent.getAttribute("aria-hidden") === "true";
+      drawerContent.setAttribute("aria-hidden", (!isHidden).toString());
+      drawerToggle.setAttribute("aria-expanded", (!isHidden).toString());
+    });
+
+    // Close Drawer
+    drawerClose.addEventListener("click", () => {
+      drawerContent.setAttribute("aria-hidden", "true");
+      drawerToggle.setAttribute("aria-expanded", "false");
+    });
+
+    // Close Drawer on Escape Key
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && drawerContent.getAttribute("aria-hidden") === "false") {
+        drawerContent.setAttribute("aria-hidden", "true");
+        drawerToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    // Close Drawer on Click Outside
+    document.addEventListener("click", (event) => {
+      const target = event.target as Node; // Cast event.target to Node
+      if (
+        drawerContent.getAttribute("aria-hidden") === "false" &&
+        !drawerContent.contains(target) &&
+        !drawerToggle.contains(target)
+      ) {
+        drawerContent.setAttribute("aria-hidden", "true");
+        drawerToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+</script>

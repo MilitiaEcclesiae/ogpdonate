@@ -1,0 +1,221 @@
+---
+import Button from '~/components/ui/Button.astro';
+
+interface TextOverlayImageProps {
+  image: string;
+  title?: string;
+  subtitle?: string | string[]; // Allow string or array
+  description?: string | string[]; // Allow string or array
+  textPosition?: 'top' | 'middle' | 'bottom';
+  textBgOpacity?: number;
+  buttonText?: string;
+  buttonLink?: string;
+  buttonType?: 'button' | 'submit' | 'reset';
+  buttonVariant?: 'primary' | 'secondary' | 'tertiary' | 'link';
+  buttonIcon?: string;
+  backgroundSize?: string;
+  titleSize?: string;
+  subtitleSize?: string;
+  descriptionSize?: string;
+  textColor?: string;
+  buttonSize?: string;
+  buttonColor?: string;
+  buttonStyle?: string;
+  backgroundHeight?: string;
+  backgroundWidth?: string;
+  containerWidth?: string;
+}
+
+// Helper function to normalize a value into an array
+const normalizeToArray = (value: string | string[] | undefined): string[] => {
+  if (Array.isArray(value)) return value;
+  if (typeof value === 'string') return [value];
+  return [];
+};
+
+const {
+  image,
+  title,
+  subtitle,
+  description,
+  textPosition = 'middle',
+  textBgOpacity = 0.7,
+  buttonText,
+  buttonLink,
+  buttonType,
+  buttonVariant = 'primary',
+  buttonIcon,
+  backgroundSize = 'cover',
+  titleSize = '2.5rem',
+  subtitleSize = '1.5rem',
+  descriptionSize = '1rem',
+  textColor = 'white',
+  buttonSize = '12rem',
+  buttonColor = 'blue',
+  buttonStyle = 'rounded-lg',
+  backgroundHeight = '400px',
+  backgroundWidth = '100%',
+  containerWidth = '100%',
+} = Astro.props as TextOverlayImageProps;
+
+// Normalize subtitle and description into arrays
+const normalizedSubtitle = normalizeToArray(subtitle);
+const normalizedDescription = normalizeToArray(description);
+
+const textPositionClasses = {
+  top: 'items-start',
+  middle: 'items-center',
+  bottom: 'items-end',
+};
+---
+
+<div
+  class="text-overlay-container"
+  style={`
+    width: ${containerWidth};
+  `}
+>
+  <!-- Background Image -->
+  <img
+    src={image}
+    alt={title || 'Background Image'}
+    class="background-image"
+    loading="lazy"
+    style={`
+      width: ${backgroundWidth};
+      height: ${backgroundHeight};
+      object-fit: ${backgroundSize};
+    `}
+  />
+
+  <!-- Text Overlay Section -->
+  <div
+    class={`text-section ${textPositionClasses[textPosition]}`}
+    style={`
+      background-color: rgba(0, 0, 0, ${textBgOpacity});
+      color: ${textColor};
+    `}
+  >
+    <!-- Title and Subtitle (Centered) -->
+    <div class="title-container">
+      {title && <h1 class="title" style={`font-size: ${titleSize};`}>{title}</h1>}
+      {normalizedSubtitle.map((text) => (
+        <h2 class="subtitle" style={`font-size: ${subtitleSize};`}>
+          {text}
+        </h2>
+      ))}
+    </div>
+
+    <!-- Description (Bottom, Left-Aligned) -->
+    <div class="description-container">
+      {normalizedDescription.map((text) => (
+        <p class="description" style={`font-size: ${descriptionSize};`}>
+          {text}
+        </p>
+      ))}
+    </div>
+
+    <!-- Button (Optional) -->
+    {buttonText && (
+      <Button
+        variant={buttonVariant}
+        text={buttonText}
+        {...(buttonLink ? { href: buttonLink } : {})}
+        {...(buttonType ? { type: buttonType } : {})}
+        icon={buttonIcon}
+        class="button"
+        style={`
+          width: ${buttonSize};
+          background-color: ${buttonColor};
+          border-radius: ${buttonStyle};
+        `}
+      />
+    )}
+  </div>
+</div>
+
+<style>
+  .text-overlay-container {
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 0;
+  }
+
+  .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .text-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .title-container {
+    text-align: center;
+  }
+
+  .title {
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+  }
+
+  .subtitle {
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .description-container {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    right: 2rem;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  .description {
+    line-height: 1.2;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .button {
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .text-section {
+      padding: 1rem;
+    }
+
+    .title {
+      font-size: calc(${titleSize} * 0.8);
+    }
+
+    .subtitle {
+      font-size: calc(${subtitleSize} * 0.8);
+    }
+
+    .description {
+      font-size: calc(${descriptionSize} * 0.8);
+    }
+
+    .description-container {
+      left: 1rem;
+      right: 1rem;
+    }
+  }
+</style>
