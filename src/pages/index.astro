@@ -1,7 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Vid from '~/components/widgets/Vid.astro';
-import { getPermalink } from '~/utils/permalinks';
 import Content from '~/components/widgets/Content.astro';
 import Features from '~/components/widgets/Features2.astro';
 import DonateForm2 from '~/components/widgets/DonateForm2.astro';
@@ -12,7 +11,7 @@ const cards = [
     {  
       image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823409/bnk_qonto_vljhmp.jpg', 
       title: '€',
-      content: 'Omnes Gentes Project\n IBAN: FR7616958000015036332992197 \nBIC: QNTOFRP1XXX \nPoblación: Ollioules  \nPaís: FRANCE ', 
+      content: 'Omnes Gentes Project IBAN: FR7616958000015036332992197 BIC: QNTOFRP1XXX \nPoblación: Ollioules  \nPaís: FRANCE ', 
     },
       {  
       image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823409/bnk_galicia_waq2ks.jpg', 
@@ -77,38 +76,6 @@ const metadata = {
 cards={cards}
 />
 
-  <!-- Campaigns -->
-  <Content
-  isReversed
-  title='Últimas Campañas'
-  items={[
-      {
-      title: "Project 1:Sanando las Comunidades Más Aisladas de Malawi",
-      description: 'En las remotas regiones de Malawi, como Wenya y Chitipa, la atención médica es un lujo inaccesible. Sin transporte ni recursos, los habitantes sufren de enfermedades contagiosas y caen en manos de hechiceros que empeoran su situación. En enero de 2022, comenzamos las "Misiones Médicas Extremas" para llevar atención médica directa a estas comunidades. Con casi 300 pacientes atendidos y un 80% de recuperación, nuestra misión sigue creciendo, ¡y esperamos llegar a más personas con el apoyo adecuado!',
-      icon: 'tabler:chart-pie',
-      callToAction: { text: 'Al projecto »', href: getPermalink('campaigns_1', 'post'), icon: 'tabler:clock', }
-    },
-  ]}
-  image={{
-    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551801/Proyecto-extremeMM_sylhfo.jpg',
-  }}
->
-</Content>
-<Content
-isAfterContent
-items={[
-    {
-    title: 'Project 2:WENYA, Entronización de Cristo Rey',
-    description: 'En una remota aldea de Malawi, donde la fe en Cristo es desconocida, los habitantes claman por el Reino de Nuestro Señor. El Omnes Gentes Project ha llegado a esta región para plantar la Iglesia y llevar el Evangelio. Con la colaboración de fieles generosos, se prepara la primera entronización de Cristo Rey en Wenya, una misión histórica que reclama este territorio para Él. ¡Únete a nosotros en esta misión de esperanza y ayuda a llevar a Cristo a aquellos que más lo necesitan!',
-    icon: 'tabler:chart-pie',
-    callToAction: { text: 'Al projecto »', href:getPermalink('campaigns_2', 'post'), icon: 'tabler:clock', }
-    },
-]}
-image={{
-  src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551864/WENYA_apapzx.jpg',
-}}
->
-</Content>
 
 <!-- approximately 7 apostolic and humanitarian emergency -->
 <Content
