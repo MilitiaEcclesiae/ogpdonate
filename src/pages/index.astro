@@ -1,54 +1,51 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Vid from '~/components/widgets/Vid.astro';
-import Content from '~/components/widgets/Content.astro';
+//import Content from '~/components/widgets/Content.astro';
 import Features from '~/components/widgets/Features2.astro';
 import DonateForm2 from '~/components/widgets/DonateForm2.astro';
-import FAQsAccordion from '~/components/widgets/FAQsAccordion.astro';
-import CardSection from '~/components/widgets/CardSection.astro';
+//import FAQsAccordion from '~/components/widgets/FAQsAccordion.astro';
+//import CardSection from '~/components/widgets/CardSection.astro';
+import OtraFormaparadonar from '~/components/widgets/OtraFormaparadonar.astro';
 
-const cards = [
-    {  
-      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823409/bnk_qonto_vljhmp.jpg', 
-      title: '€',
-      content: 'Omnes Gentes Project IBAN: FR7616958000015036332992197 BIC: QNTOFRP1XXX \nPoblación: Ollioules  \nPaís: FRANCE ', 
-    },
-      {  
-      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823409/bnk_galicia_waq2ks.jpg', 
-      title: 'ARG',
-      content: 'Federico Juan Highton\n DU Nro. 28461323\n Caja de ahorro en pesos N°: 400532443830\n CBU Nro: 0070383130004005324405\n ALIAS: AD-GENTES ' },
+// const cards = [
+//     {  
+//       image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823409/bnk_qonto_vljhmp.jpg', 
+//       title: '€',
+//       content: 'Omnes Gentes Project IBAN: FR7616958000015036332992197 BIC: QNTOFRP1XXX \nPoblación: Ollioules  \nPaís: FRANCE ', 
+//     },
+      
+//     {  
+//       image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823411/bnk_zelle_kypcqd.jpg', 
+//       title: '$',
+//       content: 'Omnes Gentes Project Ministry Inc.\n 1.Agrega a tu teléfono el siguiente contacto: (980) 860-0772. 2.Lee el código QR 3.Haz el donativo', 
+//       backImage: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738837567/image5_vkrccl.png'
+//     },
+//     { 
+//       image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823410/bnk_WF_oscfnl.jpg', 
+//       title: '$',
+//       content: 'Omnes Gentes Project Ministry Inc.\n Account: 8794503881\n Routing Number: 061000 227\n Swift: WFBIUS6S\n Bank Address: 420 Montgomery St, San Francisco, CA 94104' },
   
-    {  
-      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823411/bnk_zelle_kypcqd.jpg', 
-      title: '$',
-      content: 'Omnes Gentes Project Ministry Inc.\n 1.Agrega a tu teléfono el siguiente contacto: (980) 860-0772. 2.Lee el código QR 3.Haz el donativo', 
-      backImage: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738837567/image5_vkrccl.png'
-    },
-    { 
-      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823410/bnk_WF_oscfnl.jpg', 
-      title: '$',
-      content: 'Omnes Gentes Project Ministry Inc.\n Account: 8794503881\n Routing Number: 061000 227\n Swift: WFBIUS6S\n Bank Address: 420 Montgomery St, San Francisco, CA 94104' },
+//     { 
+//       image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823411/bnk_wise_xxlyg1.png', 
+//       title: '€',
+//       content: 'Omnes Gentes Project Ministry Inc\n BIC: TRWIBEB1XXX\n IBAN: BE96 9050 4481 3805\n Address: Rue du Trône 100, 3rd floor, Brussels 1050  Belgium ' },
   
-    { 
-      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823411/bnk_wise_xxlyg1.png', 
-      title: '€',
-      content: 'Omnes Gentes Project Ministry Inc\n BIC: TRWIBEB1XXX\n IBAN: BE96 9050 4481 3805\n Address: Rue du Trône 100, 3rd floor, Brussels 1050  Belgium ' },
+//     {  
+//       image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823410/bnk_sabadell_otn76f.png', 
+//       title: '€',
+//       content: 'Asociación San Elías España\n IBAN: ES69 0081 0057 3900 0297 3104\n BIC/SWIFT: BSAB ESBB\n Bizzum: 11157 ' },
   
-    {  
-      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823410/bnk_sabadell_otn76f.png', 
-      title: '€',
-      content: 'Asociación San Elías España\n IBAN: ES69 0081 0057 3900 0297 3104\n BIC/SWIFT: BSAB ESBB\n Bizzum: 11157 ' },
+//     {  
+//       image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823411/bnk_wise_xxlyg1.png', 
+//       title: '£',
+//       content: 'Omnes Gentes Project Ministry Inc\n Swift/BIC: TRWIGB2LXXX\n IBAN: GB56 TRWI 2314 7027 4923 88\n Address: 56 Shoreditch High Street, London, E1 6JJ United Kingdom ' },
   
-    {  
-      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823411/bnk_wise_xxlyg1.png', 
-      title: '£',
-      content: 'Omnes Gentes Project Ministry Inc\n Swift/BIC: TRWIGB2LXXX\n IBAN: GB56 TRWI 2314 7027 4923 88\n Address: 56 Shoreditch High Street, London, E1 6JJ United Kingdom ' },
-  
-    {  
-      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823409/bnk_paypal_vgmbsf.jpg', 
-      title: 'Paypal',
-      content: 'Omnes Gentes Project Ministry Inc\nHaz un envío a:\n donations@omnesgentesproject.com' }
-];
+//     {  
+//       image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823409/bnk_paypal_vgmbsf.jpg', 
+//       title: 'Paypal',
+//       content: 'Omnes Gentes Project Ministry Inc\nHaz un envío a:\n donations@omnesgentesproject.com' }
+// ];
 
 const metadata = {
   title: 'Donacion',
@@ -61,7 +58,7 @@ const metadata = {
     marginTop="1rem"
     marginBottom="1rem"
     marginLeft="3.5rem"
-    backgroundImage="https://res.cloudinary.com/dqk5ejjai/image/upload/v1737529033/mass11_waw1y7.jpg"
+    backgroundImage="https://res.cloudinary.com/dqk5ejjai/image/upload/v1738875958/donate01_vd7pme.jpg"
     title="Donate"
     subtitle="Tu donación nos ayuda a llevar la luz de Cristo al mundo. ¡Únete a nosotros en esta misión divina!"
     backgroundOpacity={0.5}
@@ -72,12 +69,14 @@ const metadata = {
     titleBold={true}
 />
 
-<CardSection 
+<OtraFormaparadonar />
+
+<!-- <CardSection 
 cards={cards}
-/>
+/> -->
 
 
-<!-- approximately 7 apostolic and humanitarian emergency -->
+<!-- approximately 7 apostolic and humanitarian emergency
 <Content
 isReversed
 title='Cada año, financiamos proyectos apostólicos y humanitarios de emergencia.'
@@ -93,7 +92,7 @@ image={{
   src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737528691/donation01_terg5f.jpg',
 }}
 >
-</Content>
+</Content> -->
 
   <!-- Donation Usage -->
   <Features 
@@ -131,7 +130,7 @@ items={[
   >
   </Content> -->
 
-<FAQsAccordion 
+<!-- <FAQsAccordion 
 title="Preguntas Frecuentes"
 subtitle="Aprenda cómo su generosidad trae esperanza y fe a los necesitados. Descubra el impacto de sus donaciones, las bendiciones de las contribuciones deducibles de impuestos y el poder del apoyo recurrente. Juntos, servimos a las misiones apostólicas con fe, transparencia y amor, respondiendo al llamado de Dios para hacer una diferencia."
 items={[
@@ -155,15 +154,14 @@ items={[
     classes={{
       container: 'custom-container-class',
 }}
-/>
+/> -->
 
   <Vid
   src="https://res.cloudinary.com/dqk5ejjai/video/upload/v1737139331/donate_qvfb5u.mp4"
-  width="90%"
   height="650px"
+  width='100%'
   marginTop="1rem"
   marginBottom="3rem"
-  marginLeft="5rem"
   autoplay={true}
   muted={false}
 />

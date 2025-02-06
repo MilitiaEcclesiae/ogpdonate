@@ -1,0 +1,155 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import type { Steps as StepsType } from '~/types';
+
+export interface ComponentProps extends StepsType {
+  marginTop?: string;
+  marginBottom?: string;
+  marginLeft?: string;
+  marginRight?: string;
+  classes?: {
+    container?: string;
+    headline?: Record<string, string>;
+  };
+}
+
+const {
+  id = '',
+  isDark = false,
+  classes = {},
+  bg = '',
+  marginTop = "0rem",
+  marginBottom = "0rem",
+  marginLeft = '3rem',
+  marginRight = '3rem',
+} = Astro.props as ComponentProps;
+
+const bgClass = isDark ? 'bg-slate-700' : 'bg-white';
+---
+
+<section class={`mt-[${marginTop}] mb-[${marginBottom}] ml-[${marginLeft}] mr-[${marginRight}]`}>
+    <!-- Title Above Component -->
+    <div class="text-center font-bold text-2xl mb-1 mt-20">
+        <h1>Transferencias USD/EUR/Otras monedas</h1>
+      </div>
+  <WidgetWrapper
+    id={id}
+    containerClass={`max-w-7xl mx-auto px-4 py-8 ${classes?.container ?? ''}`}
+    bg={bg}
+  >
+    <div class={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 `}>
+      <!-- Left Column -->
+      <div>
+        {[
+          {
+            title: 'Paypal',
+            image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823409/bnk_paypal_vgmbsf.jpg',
+            link: 'https://www.paypal.com/donate/?hosted_button_id=H8EE4A4VGLU2U',
+            linkText: 'Desde AQUÍ',
+            content: 'Omnes Gentes Project Ministry'
+          },
+          {
+            title: 'WELLS FARGO($)',
+            image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823410/bnk_WF_oscfnl.jpg',
+            content: `
+              Omnes Gentes Project Ministry Inc.
+              Account: 8794503881
+              Routing Number: 061000 227
+              Swift: WFBIUS6S
+              Bank Address: 420 Montgomery St, San Francisco, CA 94104
+            `
+          },
+          {
+            title: 'ZELLE($)',
+            image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738837567/image5_vkrccl.png',
+            content: `
+              1. Agrega a tu teléfono el siguiente contacto: (980) 860-0772.
+              2. Lee el código QR
+              3. Haz el donativo
+            `
+          }
+        ].map(({ title, image, link, linkText, content }) => (
+          <div class={`${bgClass} rounded-lg shadow-lg p-6 mb-6 dark:bg-[#b2161e] dark:text-white`}>
+            <div class="text-center font-semibold text-xl mb-4">{title}</div>
+            <div class="text-center">
+              <img class="w-3/4 md:w-1/2 mx-auto mb-4" src={image} width="70%" />
+            </div>
+            <div class="text-left">
+                {content && content.split("\n").map(line => (
+                <p class="font-semibold mb-2">{line}</p>
+              ))}
+              {link && (
+                <ul class="list-disc ml-6">
+                  <li>
+                    <a href={link} target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">
+                       {linkText}
+                    </a>
+                  </li>
+                </ul>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Right Column -->
+      <div>
+        <!-- Donation Blocks Loop for other banks -->
+        {[
+        {
+            title: 'Sabadell(€)',
+            image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823410/bnk_sabadell_otn76f.png',
+            content: `
+              Asociación San Elías España
+              IBAN: ES69 0081 0057 3900 0297 3104
+              BIC/SWIFT: BSAB ESBB
+              Bizzum: 11157`
+          },
+          {
+            title: 'Qonto(€)',
+            image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823409/bnk_qonto_vljhmp.jpg',
+            content: `
+              Omnes Gentes Project
+              IBAN: FR7616958000015036332992197
+              BIC: QNTOFRP1XXX
+              Población: Ollioules
+              País: FRANCE
+            `
+          },
+          {
+            title: 'Wise(€)',
+            image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823411/bnk_wise_xxlyg1.png',
+            content: `
+              Omnes Gentes Project Ministry Inc
+              BIC: TRWIBEB1XXX
+              IBAN: BE96 9050 4481 3805
+              Address: Rue du Trône 100, 3rd floor, Brussels 1050  Belgium
+            `
+          },
+          {
+            title: 'Wise(£)',
+            image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823411/bnk_wise_xxlyg1.png',
+            content: `
+              Omnes Gentes Project Ministry Inc
+              Swift/BIC: TRWIGB2LXXX
+              IBAN: GB56 TRWI 2314 7027 4923 88
+              Address: 56 Shoreditch High Street, London, E1 6JJ United Kingdom
+            `
+          }
+          ].map(({ title, image, content }) => (
+          <div class={`${bgClass} rounded-lg shadow-lg p-6 mb-6 dark:bg-[#b2161e] dark:text-white`}>
+            <div class="text-center font-semibold text-xl mb-4">{title}</div>
+            <div class="text-center">
+              <img class="w-3/4 md:w-1/2 mx-auto mb-4" src={image} width="70%" />
+            </div>
+            <div class="text-left">
+                {content && content.split("\n").map(line => (
+                <p class="font-semibold mb-2">{line}</p>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </WidgetWrapper>
+</section>
