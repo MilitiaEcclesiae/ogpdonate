@@ -21,39 +21,20 @@ const {
     { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: 'https://www.facebook.com/OmnesGentesProject1/' },
     { ariaLabel: 'Email', icon: 'tabler:mail', href: 'mailto:info@omnesgentesproject.com' },
   ],
-  copyrightText = "© Copyright 2025 OGP | Donations are tax deductible | ABN 15 000 002 522 | <a href='/pages/privacy'>Privacy</a> | <a href='/sitemap?view=html&amp;id=2'>Sitemap</a> | <a href='/pages/terms' title='OGP's Terms & Conditions'>Terms & Conditions</a>",
-  claimText = "OGP is a 501(c)(3) Tax Exempt Organization in the USA",
-  links = [
-    { title: "What we do", url: "/abt_what" },
-    { title: "Offer Mass", url: "/getinvolved/mass" },
-    { title: "Donate", url: "https://donorbox.org/omnesgentesproject" },
-  ],
+  copyrightText = "© Copyright 2025 OGP | Las donaciones son deducibles de impuestos | <a href='/pages/privacy'>Privacidad</a> | <a href='/pages/terms' title='Términos y Condiciones de OGP'>Términos y Condiciones</a>",
+  claimText = "OGP es una organización exenta de impuestos 501(c)(3) en los EE. UU.",
 } = Astro.props as FooterProps;
 ---
 
 <footer class="page-foot clearfix homepage-template bg-white dark:bg-[#030620] w-full">
   <div class="ht-wrapper flex flex-col items-center text-center w-full">
-    <!-- Links Section -->
-    <div class="moduletable links bg-[#B3D4FF] dark:bg-[#0A0E3A] w-full py-4"> <!-- Light Blue Background in Light Mode, Dark Blue in Dark Mode -->
-      <div class="custom links">
-        <p>
-          {links.map((link) => (
-            <>
-              <a href={link.url} title={`Learn more about ${link.title}`} class="footer-link text-black dark:text-white">{link.title}</a>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </>
-          ))}
-        </p>
-      </div>
-    </div>
-
     <!-- Horizontal Row for Supporter Enquiries, Donate Button, and Connect with Us -->
     <div class="footer-row bg-[#4D94FF] dark:bg-[#111754] w-full py-4"> <!-- Medium Blue Background in Light Mode, Darker Blue in Dark Mode -->
       <!-- Supporter Enquiries Section -->
       <div class="footer-column">
         <div class="moduletable hotline">
           <div class="custom hotline">
-            <h3 class="footer-heading text-black dark:text-white" style="margin-top: 0; font-weight: bold">Supporter enquiries</h3>
+            <h3 class="footer-heading text-black dark:text-white" style="margin-top: 0; font-weight: bold">Consultas de los patrocinadores</h3>
             <h4 style="margin-top: 0;">
               <a href={`mailto:${supporterMail}`} class="text-black dark:text-white">{supporterMail}</a>
             </h4>
@@ -67,7 +48,7 @@ const {
           <div class="custom hotline register">
             <div>
               <DrawerButtonDonorbox
-                toggleText="DONATE"
+                toggleText="DONAR"
                 marginTop="2rem"
                 marginBottom="-7rem"
                 marginLeft="3rem"
@@ -83,11 +64,11 @@ const {
       <div class="footer-column">
         <div class="moduletable social-icons">
           <div class="custom social-icons">
-            <h3 style="margin-top: 0; font-weight: bold;" class="text-black dark:text-white">Connect with us</h3>
+            <h3 style="margin-top: 0; font-weight: bold;" class="text-black dark:text-white">Conéctate con nosotros</h3>
             <ul class="flex justify-center gap-4">
               {socialLinks.map((social) => (
                 <li key={social.ariaLabel}> 
-                  <a href={social.href} title={`Visit OGP's ${social.ariaLabel} page`} aria-label={social.ariaLabel} class="text-black dark:text-white">
+                  <a href={social.href} title={`Visita la pagina ${social.ariaLabel} del OGP `} aria-label={social.ariaLabel} class="text-black dark:text-white">
                     {social.icon && <Icon name={social.icon} class="w-5 h-5" />}
                   </a>
                 </li>

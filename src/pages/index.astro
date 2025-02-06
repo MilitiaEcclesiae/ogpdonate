@@ -2,175 +2,202 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Vid from '~/components/widgets/Vid.astro';
 import { getPermalink } from '~/utils/permalinks';
-import ImgInfo from '~/components/widgets/ImgInfo.astro'
 import Content from '~/components/widgets/Content.astro';
-import ImgGallery from '~/components/widgets/ImgGallery.astro';
-import EventGallery from '~/components/widgets/EventGallery.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import Features from '~/components/widgets/Features2.astro';
+import DonateForm2 from '~/components/widgets/DonateForm2.astro';
+import FAQsAccordion from '~/components/widgets/FAQsAccordion.astro';
+import CardSection from '~/components/widgets/CardSection.astro';
 
-//ImgGallery
-const images = [
-  { image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737227918/main_imggallery05_yptpbn.jpg' },
-  { image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737227915/main_imggallery01_ajjmkk.jpg' },
-  { image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737227913/main_imggallery02_oitazj.jpg' },
-  { image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737227913/main_imggallery03_xsmeqh.jpg' },
-  { image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737227913/main_imggallery04_c22rj6.jpg' },
+const cards = [
+    {  
+      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823409/bnk_qonto_vljhmp.jpg', 
+      title: '€',
+      content: 'Omnes Gentes Project\n IBAN: FR7616958000015036332992197 \nBIC: QNTOFRP1XXX \nPoblación: Ollioules  \nPaís: FRANCE ', 
+    },
+      {  
+      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823409/bnk_galicia_waq2ks.jpg', 
+      title: 'ARG',
+      content: 'Federico Juan Highton\n DU Nro. 28461323\n Caja de ahorro en pesos N°: 400532443830\n CBU Nro: 0070383130004005324405\n ALIAS: AD-GENTES ' },
   
-];
-//ImgInfo
-const imageList = [
-  {
-    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737229941/main_imginfo_pakistan_bad8vl.jpg',
-    title: 'PAKISTAN',
-    popupContent: 'This is additional information about Image 1.',
-  },
-  {
-    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737229935/main_imginfo_malawi_p7wnip.jpg',
-    title: 'MALAWI',
-    popupContent: 'This is additional information about Image 2.',
-  },
-  {
-    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737229936/main_imginfo_amazona_czpiol.jpg',
-    title: 'AMAZON',
-    popupContent: 'This is additional information about Image 3.',
-  },
-  {
-    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737229935/main_imginfo_polonorte_hr9u1w.jpg',
-    title: 'NORTH POLE',
-    popupContent: 'This is additional information about Image 1.',
-  },
-  {
-    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737229935/main_imginfo_tibet_heorm8.jpg',
-    title: 'TIBET',
-    popupContent: 'This is additional information about Image 1.',
-  },
-  {
-    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737229934/main_imginfo_panama_vrn9pv.jpg',
-    title: 'PANAMA',
-    popupContent: 'This is additional information about Image 1.',
-  },
-  {
-    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737229933/main_imginfo_indochina_sqgmnr.png',
-    title: 'INDOCHINA',
-    popupContent: 'This is additional information about Image 1.',
-  },
-];
-
-//rolling notices
-const events = [
-  {
-    image: 'https://example.com/image1.jpg',
-    title: 'Event 1',
-    subtitle: 'Join us for an exciting event!',
-    link: 'https://example.com/event1',
-  },
-  {
-    image: 'https://example.com/image2.jpg',
-    title: 'Event 2',
-    subtitle: 'Don’t miss out on this amazing opportunity!',
-    link: 'https://example.com/event2',
-  },
-  {
-    image: 'https://example.com/image3.jpg',
-    title: 'Event 3',
-    subtitle: 'Learn something new and have fun!',
-    link: 'https://example.com/event3',
-  },
+    {  
+      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823411/bnk_zelle_kypcqd.jpg', 
+      title: '$',
+      content: 'Omnes Gentes Project Ministry Inc.\n 1.Agrega a tu teléfono el siguiente contacto: (980) 860-0772. 2.Lee el código QR 3.Haz el donativo', 
+      backImage: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738837567/image5_vkrccl.png'
+    },
+    { 
+      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823410/bnk_WF_oscfnl.jpg', 
+      title: '$',
+      content: 'Omnes Gentes Project Ministry Inc.\n Account: 8794503881\n Routing Number: 061000 227\n Swift: WFBIUS6S\n Bank Address: 420 Montgomery St, San Francisco, CA 94104' },
+  
+    { 
+      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823411/bnk_wise_xxlyg1.png', 
+      title: '€',
+      content: 'Omnes Gentes Project Ministry Inc\n BIC: TRWIBEB1XXX\n IBAN: BE96 9050 4481 3805\n Address: Rue du Trône 100, 3rd floor, Brussels 1050  Belgium ' },
+  
+    {  
+      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823410/bnk_sabadell_otn76f.png', 
+      title: '€',
+      content: 'Asociación San Elías España\n IBAN: ES69 0081 0057 3900 0297 3104\n BIC/SWIFT: BSAB ESBB\n Bizzum: 11157 ' },
+  
+    {  
+      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823411/bnk_wise_xxlyg1.png', 
+      title: '£',
+      content: 'Omnes Gentes Project Ministry Inc\n Swift/BIC: TRWIGB2LXXX\n IBAN: GB56 TRWI 2314 7027 4923 88\n Address: 56 Shoreditch High Street, London, E1 6JJ United Kingdom ' },
+  
+    {  
+      image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823409/bnk_paypal_vgmbsf.jpg', 
+      title: 'Paypal',
+      content: 'Omnes Gentes Project Ministry Inc\nHaz un envío a:\n donations@omnesgentesproject.com' }
 ];
 
 const metadata = {
-  title: 'main page',
+  title: 'Donacion',
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
-
-<Vid
-src="https://res.cloudinary.com/dqk5ejjai/video/upload/v1737141472/vidmain_yzpcjh.mp4"
-width="100%"
-height="1200px"
-marginTop="1rem"
-marginBottom="1rem"
-muted={true}
-loop={true}
-autoplay={true}
-/>  
-<div class="mt-20">
-<ImgGallery imgs={images} backgroundSize="cover" />
-<div class="mt-20">
-<ImgInfo imageList={imageList} backgroundSize="cover" />
-</div>
-<!-- rolling notices -->
-<EventGallery
-  events={events}
-  backgroundSize="contain"
-  titleSize="1.5rem"
-  subtitleSize="1rem"
-  buttonStyle="background-color: #b2161e;"
+<DonateForm2
+    marginTop="1rem"
+    marginBottom="1rem"
+    marginLeft="3.5rem"
+    backgroundImage="https://res.cloudinary.com/dqk5ejjai/image/upload/v1737529033/mass11_waw1y7.jpg"
+    title="Donate"
+    subtitle="Tu donación nos ayuda a llevar la luz de Cristo al mundo. ¡Únete a nosotros en esta misión divina!"
+    backgroundOpacity={0.5}
+    titleColor="text-yellow-500"
+    subtitleColor="text-gray-200"
+    titleSize="text-5xl"
+    subtitleSize="text-xl"
+    titleBold={true}
 />
 
-<!-- Missions for 2025 -->
-<Content
-    isReversed
-    title="Missions for 2025"
-    items={[
-      {
-        title: "Mission: Amazonas",
-        description: '<br><br>Date: <br><br>Location:',
-        icon: 'tabler:cross',
-      },
-    ]}
-    image={{
-      src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551737/libro_Tinieblas_wdmeo4.jpg',
-      alt: 'Features Image',
-    }}
-  >
-  </Content>
+<CardSection 
+cards={cards}
+/>
+
+  <!-- Campaigns -->
   <Content
-    isAfterContent
-    items={[
+  isReversed
+  title='Últimas Campañas'
+  items={[
       {
-        title: "Mission: Darien Jungle",
-        description: '<br><br>Date: <br><br>Location:',
-        icon: 'tabler:book',
-      },
-    ]}
-    image='https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551560/book_AdGentes_yomqpd.jpg'
-       >
-</Content>  
-<!-- Ongoing Campaigns -->
+      title: "Project 1:Sanando las Comunidades Más Aisladas de Malawi",
+      description: 'En las remotas regiones de Malawi, como Wenya y Chitipa, la atención médica es un lujo inaccesible. Sin transporte ni recursos, los habitantes sufren de enfermedades contagiosas y caen en manos de hechiceros que empeoran su situación. En enero de 2022, comenzamos las "Misiones Médicas Extremas" para llevar atención médica directa a estas comunidades. Con casi 300 pacientes atendidos y un 80% de recuperación, nuestra misión sigue creciendo, ¡y esperamos llegar a más personas con el apoyo adecuado!',
+      icon: 'tabler:chart-pie',
+      callToAction: { text: 'Al projecto »', href: getPermalink('campaigns_1', 'post'), icon: 'tabler:clock', }
+    },
+  ]}
+  image={{
+    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551801/Proyecto-extremeMM_sylhfo.jpg',
+  }}
+>
+</Content>
 <Content
-    isReversed
-    title="Ongoing Campaigns"
-    items={[
-      {
-        title: "Campaign1: Sanando las Comunidades Más Aisladas de Malawi",
-        description: "<br><br>Date: <br><br>Location:<br><br>Amount:",
-        icon: 'tabler:tip-jar',
-        callToAction: { text: 'Donate Now', href: getPermalink('campaigns_1', 'post'), icon: 'tabler:heart-handshake',}
-        },
-    ]}
-    image='https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551801/Proyecto-extremeMM_sylhfo.jpg'
-  >
-  </Content>
-  <Content
-    isReversed
-    items={[
-      {
-        title: "Campaign2: WENYA, Entronización de Cristo Rey",
-        description: "<br><br>Date: <br><br>Location:<br><br>Amount:",
-        icon: 'tabler:tip-jar',
-        callToAction: { text: 'Donate Now', href: getPermalink('campaigns_2', 'post'), icon: 'tabler:heart-handshake', }
-        },
-    ]}
-    image='https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551864/WENYA_apapzx.jpg'
-  >
+isAfterContent
+items={[
+    {
+    title: 'Project 2:WENYA, Entronización de Cristo Rey',
+    description: 'En una remota aldea de Malawi, donde la fe en Cristo es desconocida, los habitantes claman por el Reino de Nuestro Señor. El Omnes Gentes Project ha llegado a esta región para plantar la Iglesia y llevar el Evangelio. Con la colaboración de fieles generosos, se prepara la primera entronización de Cristo Rey en Wenya, una misión histórica que reclama este territorio para Él. ¡Únete a nosotros en esta misión de esperanza y ayuda a llevar a Cristo a aquellos que más lo necesitan!',
+    icon: 'tabler:chart-pie',
+    callToAction: { text: 'Al projecto »', href:getPermalink('campaigns_2', 'post'), icon: 'tabler:clock', }
+    },
+]}
+image={{
+  src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551864/WENYA_apapzx.jpg',
+}}
+>
 </Content>
 
+<!-- approximately 7 apostolic and humanitarian emergency -->
+<Content
+isReversed
+title='Cada año, financiamos proyectos apostólicos y humanitarios de emergencia.'
+items={[
+    {
+    title: "Conéctate con nosotros para saber más sobre nuestra causa.",
+    description: 'Este es nuestro llamado—llevar esperanza, fe y amor a los rincones más remotos del mundo, donde aún no ha llegado la luz del Evangelio. Juntos, somos las manos y los pies de Cristo, alcanzando a los olvidados, los oprimidos y los quebrantados. Con tu apoyo, podemos seguir construyendo el Reino de Dios, una alma a la vez, en lugares donde Su nombre es más necesario.<br/><br/>Levantémonos para esta misión santa, porque la cosecha es abundante y el tiempo es ahora. Juntos, podemos llevar las Buenas Nuevas hasta los confines de la tierra, para la gloria de Dios y la salvación de las almas. Amén.',
+    icon: 'tabler:chart-pie',
+    callToAction: { text: 'Donate Ahora »', href: `https://donorbox.org/omnesgentesproject`, icon: 'tabler:heart-handshake', }
+  },
+]}
+image={{
+  src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1737528691/donation01_terg5f.jpg',
+}}
+>
+</Content>
 
-  <!-- Mission Posts ******* -->
-  <BlogLatestPosts
-    title="EXPLORE THE LATEST MISSIONS"
+  <!-- Donation Usage -->
+  <Features 
+  title="El 100% de los Proyectos de OGP Son Sostenidos por Donaciones"
+subtitle="Para lograr nuestra misión, dependemos de la generosidad de fieles patrocinadores como tú. Tus contribuciones nos permiten llevar a cabo una amplia gama de iniciativas que hacen que el Evangelio cobre vida de manera tangible. A continuación, te mostramos las áreas clave donde tus donaciones pueden hacer un impacto duradero:"
+items={[
+    { title: "Campañas de Ayuda General", description: "Tu apoyo ayuda a financiar proyectos esenciales que abordan las necesidades más urgentes en los territorios de misión. Estas campañas proporcionan la base para la evangelización y aseguran que el Evangelio pueda echar raíces incluso en los entornos más desafiantes.", icon: "tabler:heart-handshake" },
+    { title: "Sostenimiento de Misioneros", description: "Tus donaciones ayudan a cubrir las necesidades diarias de sacerdotes, hermanas religiosas y misioneros laicos que dedican sus vidas a difundir el Evangelio. Desde comida y alojamiento hasta transporte y herramientas de comunicación, tu apoyo garantiza que puedan centrarse en su misión sin distracciones.", icon: "tabler:recharging" },
+    { title: "Herramientas Apostólicas", description: "Equipamos a nuestros misioneros con los recursos que necesitan para proclamar el Evangelio de manera efectiva. Tus contribuciones financian la producción y distribución de Biblias, catecismos y otros materiales que ayudan a los nuevos creyentes a crecer en su fe.", icon: "tabler:bible" },
+    { title: "Construcción y Restauración de Iglesias", description: "En muchos territorios de misión, no hay iglesias donde la gente pueda reunirse para adorar. Tu generosidad nos ayuda a construir nuevas iglesias y restaurar las existentes, creando espacios sagrados donde las comunidades puedan reunirse para celebrar los sacramentos y profundizar su relación con Dios.", icon: "tabler:building-church" },
+    { title: "Ayuda de Emergencia", description: "En tiempos de crisis, tu apoyo proporciona alivio inmediato a las comunidades devastadas por desastres naturales, conflictos o pobreza extrema. Desde comida y agua limpia hasta suministros médicos y refugio, tu generosidad asegura que los más vulnerables reciban la atención urgente que necesitan. Juntos, llevamos esperanza y sanación a aquellos que enfrentan desafíos inimaginables, encarnando el amor de Cristo en sus momentos más oscuros.", icon: "tabler:ambulance" },
+]}
+  columns={3}
+  classes={{
+    container: 'custom-container-class',
+    headline: { title: 'text-2xl font-bold', subtitle: 'text-l text-gray-600' },
+    items: { title: 'text-xl font-semibold', icon: 'text-blue-500' },
+  }}
   />
+
+  <!-- <Content
+  isReversed
+  items={[
+      {
+      title: "Did you know your donations are up to 80% tax-deductible?",
+      description: 'By making a donation, you can claim this contribution as a deduction on your income tax return.',
+      icon: 'tabler:chart-pie',
+      callToAction: { text: 'MORE INFO »', href: `https://donorbox.org/omnesgentesproject`, icon: 'tabler:binoculars', }
+    },
+  ]}
+  image={{
+    src: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551631/IMG_20230308_102945_gkt42c.jpg',
+    alt: 'Features Image',
+  }}
+  >
+  </Content> -->
+
+<FAQsAccordion 
+title="Preguntas Frecuentes"
+subtitle="Aprenda cómo su generosidad trae esperanza y fe a los necesitados. Descubra el impacto de sus donaciones, las bendiciones de las contribuciones deducibles de impuestos y el poder del apoyo recurrente. Juntos, servimos a las misiones apostólicas con fe, transparencia y amor, respondiendo al llamado de Dios para hacer una diferencia."
+items={[
+  { title: "¿Quién se beneficia de su donación y cómo?", details: "Si desea destinar su donación a una campaña específica, se utilizará para financiar proyectos relacionados. Si las necesidades de la campaña ya están cubiertas cuando se reciba su donación, esta será redirigida a proyectos similares o a necesidades pastorales y de emergencia en el mismo país. Si no se indica un destino específico, su donación se utilizará para las necesidades más urgentes. En Ayuda a la Iglesia Necesitada, gestionamos las donaciones con total transparencia, comprometidos con la confianza de nuestros benefactores y la Iglesia sufriente, que es nuestra misión principal. Además, sus contribuciones pueden ser deducibles de impuestos: los primeros €150 anuales son deducibles al 80% (usted deduce €120, por lo que su donación le cuesta efectivamente €30). Para montos superiores a €150, la deducción es del 35%, o 40% para donaciones recurrentes." },
+  { title: "¿Cómo se deducen las donaciones de impuestos y en qué porcentaje?", details: "Los primeros €150 donados son deducibles al 80% (usted deduce €120, por lo que su donación le cuesta efectivamente €30). Para montos superiores a €150, la deducción es del 35%, o 40% para donaciones recurrentes. Para solicitar la deducción, proporcione su nombre completo, número de identificación, dirección y el propósito de la donación, o contáctenos." },
+  { title: "¿Qué considera la autoridad fiscal como una donación recurrente?", details: "Si ha donado durante los últimos dos años con una cantidad igual o superior al año anterior, la deducción será del 40% para los montos superiores a los primeros €150. Fomentamos las donaciones recurrentes. Recuerde proporcionar su nombre, número de identificación, dirección y el propósito de la donación." },
+  { title: "¿Quiere hacer donaciones periódicas que no sean mensuales?", details: "Si desea hacer donaciones periódicas (trimestrales, semestrales o anuales) en lugar de mensuales, contáctenos por correo electrónico a donations@omnesgentesproject.com." },
+  { title: "Beneficios de hacer un testamento", details: "Un testamento asegura que se cumplan sus deseos. Previene disputas o conflictos futuros entre herederos. Sin testamento, se requiere una declaración de herederos (un proceso más largo, complejo y costoso). Si no hay herederos ni testamento, su patrimonio pasa al estado. Crear un testamento es asequible, modificable y sencillo." },
+  { title: "¿Por qué confiar en el Proyecto Omnes Gentes?", details: "El Proyecto Omnes Gentes es una organización católica internacional dedicada a proporcionar ayuda pastoral a los cristianos perseguidos. No recibimos fondos públicos y dependemos exclusivamente de donaciones privadas. Operamos con total transparencia, y nuestros informes son auditados. Puede revisar nuestro informe de auditoría." },
+  { title: "Pasos para incluir el Proyecto Omnes Gentes en su testamento", details: "Para dejar bienes al Proyecto Omnes Gentes en su testamento, visite a un notario y proporcione los datos de la fundación(conseguirlo por donations@omnesgentesproject.com ). Envíenos una copia del testamento o de la página correspondiente. Todos los datos personales serán tratados de forma confidencial y en cumplimiento con la ley." },
+]}
+    titleTextSize="text-2xl sm:text-2xl"
+    subtitleTextSize="text-xl sm:text-1xl"
+    subtitleTextColor="text-gray-700"
+    itemTextSize="text-lg"
+    itemTextColor="text-gray-800"
+    itemHoverTextColor="text-red-900"
+    contentTextColor="text-black-600"
+    contentTextSize="text-base"
+    contentTextColor="text-black-600"
+    classes={{
+      container: 'custom-container-class',
+}}
+/>
+
+  <Vid
+  src="https://res.cloudinary.com/dqk5ejjai/video/upload/v1737139331/donate_qvfb5u.mp4"
+  width="90%"
+  height="650px"
+  marginTop="1rem"
+  marginBottom="3rem"
+  marginLeft="5rem"
+  autoplay={true}
+  muted={false}
+/>
 </Layout>

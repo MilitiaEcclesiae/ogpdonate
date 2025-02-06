@@ -10,8 +10,8 @@ site:
 metadata:
   title:
     default: OmnesGentesProject
-    template: '%s — AstroWind'
-  description: "\U0001F680 CATHOLIC MISSION ORG."
+    template: ''
+  description: "CATHOLIC MISSION ORG."
   robots:
     index: true
     follow: true

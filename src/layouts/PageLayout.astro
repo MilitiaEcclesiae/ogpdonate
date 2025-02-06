@@ -3,7 +3,7 @@ import Layout from '~/layouts/Layout.astro';
 import Note from '~/components/widgets/Note.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer02 from '~/components/widgets/Footer02.astro';
-import NewsLetter from '~/components/widgets/NewsLetter.astro';
+//import NewsLetter from '~/components/widgets/NewsLetter.astro';
 import TextOverlayImage from '~/components/widgets/TextOverlayImage.astro';
 import SocialLinkSticker from '~/components/widgets/SocialLinkSticker.astro';
 
@@ -32,28 +32,29 @@ const { metadata } = Astro.props;
   <main>
     <slot />
   </main>
-  <NewsLetter
+  <!-- <NewsLetter
     backgroundImage="https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551634/newsletter_portada_snnxfr.jpg"
     title="Subscribe to Our Newsletter"
     subtitle="Get the latest updates and exclusive offers delivered straight to your inbox."
     buttonText="Subscribe Now"
-/>
+/> -->
+
+
+<!-- ¡HAZ TU DONACIÓN HOY y sé parte de esta misión divina! \n'Y el evangelio debe ser predicado primero a todas las naciones.' – Marcos 13:10" -->
 <!-- Donation banner -->
     <TextOverlayImage
     image='https://res.cloudinary.com/dqk5ejjai/image/upload/v1736551623/IMG_1380_cpbvd9.jpg'
-    title="Ignite the Holy Fire Across the World"
-    subtitle="Your donation fuels the Catholic Mission at the End of the World, bringing Christ’s light to the most faithful and underserved. Together, we can ignite hearts with the Gospel and strengthen the Lord’s work."
-    subtitle02="DONATE TODAY and be part of this divine mission!"
-    subtitle03='"And the gospel must first be preached to all nations." – Mark 13:10'
+    title="Enciende el Fuego Santo en Todo el Mundo"
+    subtitle=`Tu donación impulsa la Misión Católica en el Fin del Mundo, llevando la luz de Cristo a los más fieles y desatendidos. Juntos, podemos encender corazones con el Evangelio y fortalecer la obra del Señor. `
     textBgOpacity={0.5}
     backgroundSize="cover"
     titleSize="2rem"
     subtitleSize="1rem"
     textColor="white"
-    backgroundHeight="450px"
+    backgroundHeight="650px"
     backgroundWidth="100%"
     containerWidth="100%"
-    buttonText="Donate Now"
+    buttonText="Donate "
     buttonLink="https://donorbox.org/omnesgentesproject"
     buttonIcon="tabler:heart-handshake"
     buttonColor="#b2161e"

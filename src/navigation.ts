@@ -1,65 +1,11 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink } from './utils/permalinks';
 
 //project current&planning>>main page; history-whatwedo
 //campaign curren>>main page&donation(history/current/planning)
 
 export const headerData = {
   links: [
-        {
-          text: 'ABOUT THE OGP',
-          links: [
-            {
-              text: 'Who we are',
-              href: getPermalink('/about/abt_who'),
-            },
-            {
-              text: 'What we do',  // project history
-              href: getPermalink('/about/abt_what'),
-            },
-          ]
-        },
-    {
-      text: 'UPDATES',
-      links: [
-        {
-          text: 'Missions',
-          href: getPermalink('missions', 'category'),
-        },
-        {
-          text: 'Testimonials',  
-          href: getPermalink('testimonials', 'category'),
-        },
-        {
-          text: 'Podcast',   //expand media-other programs videos/music/AILab
-          href: `https://www.youtube.com/channel/UCZi70I4cl1Dp1KXFEVmbIQA`,
-        },
-      ],
-    },
-    {
-      text: 'GET INVOLVED',
-      links: [
-        {
-          text: 'Donation',
-          href: getPermalink('/getinvolved/donation'),
-        },
-        {
-          text: 'Mass',
-          href: getPermalink('/getinvolved/mass'),
-        },
-        {
-          text: 'Prayer',
-          href: getPermalink('/getinvolved/prayer'),
-        },
-        {
-          text: 'Voluntary',  
-          href: getPermalink('/getinvolved/voluntary'),
-        },
-      ],
-    },
-    {
-      text: 'RESOURCES',  //words-bks/materials/reza
-      href: getPermalink('/resources'),
-    },
+    
   ],                       //Shop 
   actions: [{ text: 'Donate', href: 'https://donorbox.org/omnesgentesproject', target: '_blank',  }],
 };
@@ -68,16 +14,6 @@ export const footerData = {
   secondaryLinks: [
     { text: 'Terms', href: getPermalink('/terms') },
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
-  ],
-  claim: 'OGP is a 501(c)(3) Tax Exempt Organization in the USA',
-  contactInfo: [
-    'CONTACT US',
-    'Sede central',
-    'Ferrer del Río, 14',
-    '(esq. C/ Ardemans)',
-    '28028 MADRID',
-    'info@omnesgentesproject.com',
-    '91 725 92 12',
   ],
   socialLinks: [
     { ariaLabel: 'youtube', icon: 'tabler:brand-youtube', href: 'https://www.youtube.com/channel/UCZi70I4cl1Dp1KXFEVmbIQA' },
