@@ -1,5 +1,4 @@
 ---
-// DonateForm.astro
 export interface Props {
   marginTop?: string; // Top margin (e.g., "2rem")
   marginBottom?: string;
@@ -37,7 +36,7 @@ const {
 
 <!-- Main Container -->
 <div
-  class="relative flex items-center w-[85%] p-5 bg-cover bg-center mx-auto"
+  class="relative flex items-center w-[90%] p-5 bg-cover bg-center mx-auto"
   style={`
     margin-top: ${marginTop};
     margin-bottom: ${marginBottom};
@@ -53,9 +52,9 @@ const {
   ></div>
 
   <!-- Grid Layout for Title/Subtitle and Donation Form -->
-  <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+  <div class="w-full grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
     <!-- Title and Subtitle (Left Side - 1/3) -->
-    <div class="flex items-center justify-start col-span-1">
+    <div class="flex items-start justify-start col-span-1 pt-[50%]">
       <div class="max-w-md text-left">
         <h1 class={`${titleSize} ${titleBold ? 'font-bold' : 'font-normal'} ${titleColor} mb-4`}>
           {title}
@@ -67,15 +66,15 @@ const {
     </div>
 
     <!-- Donation Form Embed (Right Side - 2/3) -->
-    <div class="flex items-center justify-end col-span-2">
-      <div id="donor-container-form" class="text-center">
+    <div class="flex items-start justify-end col-span-2 relative">
+      <div id="donor-container-form" class="text-center w-full h-full right-0 max-w-[400px]">
         <iframe
           src="https://donorbox.org/embed/omnesgentesproject?language=en"
           allowpaymentrequest="true"
           seamless="seamless"
           height="820px"
-          width="150%"
-          style="max-width: 500px; min-width: 250px; max-height: none !important"
+          width="100%"
+          style="max-width: 500px; min-width: 250px; max-height: none !important; border: none;"
           allow="payment"
           title="Donation Form"
         ></iframe>

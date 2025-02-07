@@ -109,7 +109,7 @@ const contentBlocks = [
       <!-- Left Column -->
       <div>
         {contentBlocks.slice(0, 4).map(({ title, image, link, linkText, content }) => (
-          <div class={`${bgClass} rounded-lg shadow-lg p-6 mb-6 dark:bg-[#b2161e] dark:text-white relative`} key={title}>
+          <div class={`${bgClass} rounded-lg shadow-lg p-6 mb-6 dark:bg-[#b2161e] dark:text-white relative`} {title}>
             <div class="text-center font-semibold text-xl mb-4">{title}</div>
 
             {title === 'ZELLE(USA)' && (
@@ -123,8 +123,8 @@ const contentBlocks = [
             )}
             
             <div class="text-left">
-              {content && content.split("\n").map((line, index) => (
-                <p class="font-semibold mb-2" {index}>{line}</p>
+              {content && content.split("\n").map((line) => (
+                <p class="font-semibold mb-2">{line}</p>
               ))}
               {link && (
                 <ul class="list-disc ml-6">
@@ -140,7 +140,7 @@ const contentBlocks = [
             {/* Image at the top */}
             {image && (
               <div class="absolute top-0 left-0 w-full">
-                <img class="object-contain h-[35px] w-[100px] mb-1000" src={image} alt={title} />
+                <img class="object-contain h-[30px] w-[70px] mb-1000" src={image} alt={title} />
               </div>
             )}
           </div>
@@ -150,18 +150,18 @@ const contentBlocks = [
       <!-- Right Column -->
       <div>
         {contentBlocks.slice(4).map(({ title, image, content }) => (
-          <div class={`${bgClass} rounded-lg shadow-lg p-6 mb-6 dark:bg-[#b2161e] dark:text-white relative`} key={title}>
+          <div class={`${bgClass} rounded-lg shadow-lg p-6 mb-6 dark:bg-[#b2161e] dark:text-white relative`} {title}>
             <div class="text-center font-semibold text-xl mb-4">{title}</div>
             <div class="text-left">
-              {content && content.split("\n").map((line, index) => (
-                <p class="font-semibold mb-2" {index}>{line}</p>
+              {content && content.split("\n").map((line) => (
+                <p class="font-semibold mb-2">{line}</p>
               ))}
             </div>
 
             {/* Image at the top */}
             {image && (
               <div class="absolute top-0 left-0 w-full">
-                <img class="object-contain h-[35px] w-[100px] mb-1000" src={image} alt={title} />
+                <img class="object-contain h-[30px] w-[70px] mb-1000" src={image} alt={title} />
               </div>
             )}
           </div>
