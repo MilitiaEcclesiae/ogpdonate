@@ -7,7 +7,7 @@ export const headerData = {
   links: [
     
   ],                       //Shop 
-  actions: [{ text: 'Donate', href: 'https://donorbox.org/omnesgentesproject', target: '_blank',  }],
+  actions: [{ text: 'Dona', href: 'https://donorbox.org/omnesgentesproject', target: '_blank',  }],
 };
 
 export const footerData = {

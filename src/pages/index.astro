@@ -8,6 +8,7 @@ import DonateForm2 from '~/components/widgets/DonateForm2.astro';
 //import CardSection from '~/components/widgets/CardSection.astro';
 import OtraFormaparadonar from '~/components/widgets/OtraFormaparadonar.astro';
 
+
 // const cards = [
 //     {  
 //       image: 'https://res.cloudinary.com/dqk5ejjai/image/upload/v1738823409/bnk_qonto_vljhmp.jpg', 
@@ -59,7 +60,7 @@ const metadata = {
     marginBottom="1rem"
     marginLeft="3.5rem"
     backgroundImage="https://res.cloudinary.com/dqk5ejjai/image/upload/v1738875958/donate01_vd7pme.jpg"
-    title="Donate"
+    title="Dona"
     subtitle="Tu donación nos ayuda a llevar la luz de Cristo al mundo. ¡Únete a nosotros en esta misión divina!"
     backgroundOpacity={0.5}
     titleColor="text-yellow-500"
@@ -96,14 +97,14 @@ image={{
 
   <!-- Donation Usage -->
   <Features 
-  title="El 100% de los Proyectos de OGP Son Sostenidos por Donaciones"
-subtitle="Para lograr nuestra misión, dependemos de la generosidad de fieles patrocinadores como tú. Tus contribuciones nos permiten llevar a cabo una amplia gama de iniciativas que hacen que el Evangelio cobre vida de manera tangible. A continuación, te mostramos las áreas clave donde tus donaciones pueden hacer un impacto duradero:"
+  title="El 100% de los proyectos del OGP se financian con donaciones"
+subtitle="Para llevar adelante nuestras expediciones misionales dependemos de la generosidad de fieles benefactores como tú. Tus contribuciones nos permiten llevar a cabo diferentes iniciativas que hacen que el Evangelio llegue cada vez más a nuevos rincones inhóspitos. A continuación, te mostramos las áreas clave donde tus donaciones pueden hacer un impacto duradero, a través de las cuales Evangelio se hace vida:"
 items={[
-    { title: "Campañas de Ayuda General", description: "Tu apoyo ayuda a financiar proyectos esenciales que abordan las necesidades más urgentes en los territorios de misión. Estas campañas proporcionan la base para la evangelización y aseguran que el Evangelio pueda echar raíces incluso en los entornos más desafiantes.", icon: "tabler:heart-handshake" },
-    { title: "Sostenimiento de Misioneros", description: "Tus donaciones ayudan a cubrir las necesidades diarias de sacerdotes, hermanas religiosas y misioneros laicos que dedican sus vidas a difundir el Evangelio. Desde comida y alojamiento hasta transporte y herramientas de comunicación, tu apoyo garantiza que puedan centrarse en su misión sin distracciones.", icon: "tabler:recharging" },
-    { title: "Herramientas Apostólicas", description: "Equipamos a nuestros misioneros con los recursos que necesitan para proclamar el Evangelio de manera efectiva. Tus contribuciones financian la producción y distribución de Biblias, catecismos y otros materiales que ayudan a los nuevos creyentes a crecer en su fe.", icon: "tabler:bible" },
-    { title: "Construcción y Restauración de Iglesias", description: "En muchos territorios de misión, no hay iglesias donde la gente pueda reunirse para adorar. Tu generosidad nos ayuda a construir nuevas iglesias y restaurar las existentes, creando espacios sagrados donde las comunidades puedan reunirse para celebrar los sacramentos y profundizar su relación con Dios.", icon: "tabler:building-church" },
-    { title: "Ayuda de Emergencia", description: "En tiempos de crisis, tu apoyo proporciona alivio inmediato a las comunidades devastadas por desastres naturales, conflictos o pobreza extrema. Desde comida y agua limpia hasta suministros médicos y refugio, tu generosidad asegura que los más vulnerables reciban la atención urgente que necesitan. Juntos, llevamos esperanza y sanación a aquellos que enfrentan desafíos inimaginables, encarnando el amor de Cristo en sus momentos más oscuros.", icon: "tabler:ambulance" },
+    { title: "Campañas de Ayuda General", description: "Tu apoyo ayuda a financiar proyectos misionales que abordan diferentes necesidades, más o menos urgentes, en los territorios de misión. Estas campañas nos ayudan a solventar los gastos de cada expedición, pero también el sostenimiento de algunos proyectos permanentes, como la misión de Malawi o Ecuador.", icon: "tabler:heart-handshake" },
+    { title: "Sostenimiento de Misioneros", description: "En cada una de las expediciones debemos cubrir las necesidades diarias de los sacerdotes y misioneros laicos que dedican el 100% de su tiempo a difundir el Evangelio. Comida, alojamiento, transporte y elementos de apostolado y comunicación son algunos de los gastos que se financian con tu apoyo, garantizando que los misioneros puedan centrarse en su trabajo sin distracciones.", icon: "tabler:recharging" },
+    { title: "Herramientas Apostólicas", description: "Nuestros misioneros realizan cada expedición con los recursos básicos que necesitan para celebrar los Sacramentos y anunciar el Evangelio de manera efectiva. Tu aporte financia la distribución de Biblias, catecismos e imágenes, así como otros elementos y dispositivos que ayudan a los nuevos conversos a crecer en la Fe.", icon: "tabler:bible" },
+    { title: "Construcción de capillas", description: "En muchos lugares de misión no hay capillas ni iglesias donde la gente pueda reunirse para rezar, conocer la Fe y adorar al Señor. Tu generosidad nos ayuda a construir nuevas capillas no sólo en los rincones más aislados, sino también en otros donde los nuevos cristianos pueden encontrar a Cristo aún donde son perseguidos por buscarlo.", icon: "tabler:building-church" },
+    { title: "Proyectos de Buen Samaritano", description: "Como los territorios de misión a donde va el OGP buscan ser los más aislados y extremos, muchas veces encontramos necesidades materiales muy básicas insatisfechas. Siempre que nos resulta posible y a ejemplo del Buen Samaritano, asistimos a personas vulnerables que nos solicitan asistencia de la más básica: el traslado a un hospital, comida, la reparación de los techos de una choza o acceso a agua potable. Con tu colaboración podemos llevar esperanza a aquellos que enfrentan duros desafíos, encarnando el amor de Cristo.", icon: "tabler:ambulance" },
 ]}
   columns={3}
   classes={{
